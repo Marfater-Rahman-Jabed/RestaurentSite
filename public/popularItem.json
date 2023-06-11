@@ -1,0 +1,86 @@
+[
+    {
+        "id": 0,
+        "name": "Avery Oneill",
+        "discount": 10,
+        "picture": "https://i.ibb.co/K2YCT4r/chicken-Burger.jpg",
+        "price": 10
+    },
+    {
+        "id": 1,
+        "name": "Avery Oneill",
+        "discount": 12,
+        "picture": "https://i.ibb.co/WxnYcL6/chicken1.jpg",
+        "price": 10
+    },
+    {
+        "id": 2,
+        "name": "Avery Oneill",
+        "discount": 5,
+        "picture": "https://i.ibb.co/K2YCT4r/chicken-Burger.jpg",
+        "price": 10
+    },
+    {
+        "id": 3,
+        "name": "Avery Oneill",
+        "discount": 15,
+        "picture": "https://i.ibb.co/fQj1zXQ/Hot-Spicy-Fizza.jpg",
+        "price": 10
+    },
+    {
+        "id": 4,
+        "name": "Avery Oneill",
+        "discount": 8,
+        "picture": "https://i.ibb.co/Thj2rsX/franch-Fry1.jpg",
+        "price": 10
+    },
+    {
+        "id": 5,
+        "name": "Avery Oneill",
+        "discount": 20,
+        "picture": "https://i.ibb.co/FV7wKdH/hotdog3.jpg",
+        "price": 10
+    },
+    {
+        "id": 6,
+        "name": "Avery Oneill",
+        "discount": 15,
+        "picture": "https://i.ibb.co/px3V3mg/Roll2.jpg",
+        "price": 10
+    },
+    {
+        "id": 7,
+        "name": "Avery Oneill",
+        "discount": 13,
+        "picture": "https://i.ibb.co/K2YCT4r/chicken-Burger.jpg",
+        "price": 10
+    },
+    {
+        "id": 8,
+        "name": "Avery Oneill",
+        "discount": 10,
+        "picture": "https://i.ibb.co/vdTN2b8/Sandwich1.jpg",
+        "price": 10
+    },
+    {
+        "id": 8,
+        "name": "Avery Oneill",
+        "discount": 0,
+        "picture": "https://i.ibb.co/WvFr2N1/hotdog2.jpg",
+        "price": 10
+    },
+    {
+        "id": 8,
+        "name": "Avery Oneill",
+        "discount": 10,
+        "picture": "https://i.ibb.co/c1xPc7p/chicken2.jpg2",
+        "price": 10
+    },
+    {
+        "id": 9,
+        "name": "Avery Oneill",
+        "discount": 12,
+        "picture": "https://i.ibb.co/2FY2DTw/Coffee2.jpg",
+        "price": 10
+    }
+]
