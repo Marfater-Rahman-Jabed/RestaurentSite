@@ -1,369 +1,465 @@
 [
     {
-        "_id": "64845287735a0439a36ac7b2",
         "title": "Burger",
         "logo": "https://i.ibb.co/K2YCT4r/chicken-Burger.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Avery Oneill",
+                "name": "Beef Burger",
                 "picture": "https://i.ibb.co/K2YCT4r/chicken-Burger.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Coleman Mcbride",
+                "name": "Chicken Burger",
                 "picture": "https://i.ibb.co/tZ3VPG4/Fire-Burger.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Pratt Holmes",
+                "name": "Vegitable Burger",
                 "picture": "https://i.ibb.co/2MNGPJK/Fish-Burger.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Guthrie Mcmillan",
+                "name": "Fish Burger",
                 "picture": "https://i.ibb.co/jGQx2FX/Hot-Spicy-Burger.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Fry Oneil",
+                "name": "Mutton Burger",
                 "picture": "https://i.ibb.co/nmwn8GC/vegitable-Burger.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "648452870bf50da712523130",
         "title": "Chicken Fry",
         "logo": "https://i.ibb.co/p216Sct/6SiZ7Y.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Nguyen Spears",
+                "name": "Chicken Fry",
                 "picture": "https://i.ibb.co/p216Sct/6SiZ7Y.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Soto Blake",
+                "name": "Masala Chicken Fry",
                 "picture": "https://i.ibb.co/WxnYcL6/chicken1.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Karyn Best",
+                "name": "Yummy Chicken Fry",
                 "picture": "https://i.ibb.co/c1xPc7p/chicken2.jpg2",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Walton Faulkner",
+                "name": "Grill Chicken Fry",
                 "picture": "https://i.ibb.co/sKb0bWS/chicken6.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Janie Suarez",
+                "name": "Special Chicken Fry",
                 "picture": "https://i.ibb.co/qgTLVwk/chicken4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Oneil Paul",
+                "name": "Hot Chicken Fry",
                 "picture": "https://i.ibb.co/8r2LVNp/chicken3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "64845287bfcc0d44d453fb5f",
         "title": "Fizza",
         "logo": "https://i.ibb.co/LgThbym/Chilli-Fizza.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Betty Allen",
+                "name": "Chilli Fizza",
                 "picture": "https://i.ibb.co/LgThbym/Chilli-Fizza.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Cunningham Joyce",
+                "name": "Hot-Spicy-Fizza",
                 "picture": "https://i.ibb.co/fQj1zXQ/Hot-Spicy-Fizza.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Wendi Adams",
+                "name": "Sea-Food-Fizza",
                 "picture": "https://i.ibb.co/RPvV9Jh/Sea-Food-Fizza.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Bettie Serrano",
+                "name": "Tomato-FIzza",
                 "picture": "https://i.ibb.co/TtRrm27/Tomato-FIzza.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Horne Mann",
+                "name": "tomato-Special-Fizza",
                 "picture": "https://i.ibb.co/6FjKT8W/tomato-Special-Fizza.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "64845287528ef853dd2bb9f7",
         "title": "Franch Fry",
         "logo": "https://i.ibb.co/DW0LSkP/Franch-Fry.jpg",
         "items": [
             {
                 "id": 1,
-                "name": "Kellie Roman",
+                "name": "Franch-Fry",
                 "picture": "https://i.ibb.co/DW0LSkP/Franch-Fry.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Rowe Hopper",
+                "name": "Spicy Franch-Fry",
                 "picture": "https://i.ibb.co/Thj2rsX/franch-Fry1.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Cristina Robertson",
+                "name": "Franch-Fry Special",
                 "picture": "https://i.ibb.co/xHzHpX6/franch-Fry2.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Lang Gates",
+                "name": "Franch-Fry vlgos",
                 "picture": "https://i.ibb.co/Fst7YTp/franch-Fry3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Owen Roberson",
+                "name": "Tomato Franch-Fry",
                 "picture": "https://i.ibb.co/0ZnZKNp/franch-Fry4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 5,
-                "name": "Davis Kirkland",
+                "name": "Hot cashap Franch-Fry",
                 "picture": "https://i.ibb.co/XZswRfb/franch-Fry5.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 6,
-                "name": "Christian Kirk",
+                "name": "colsup Franch-Fry",
                 "picture": "https://i.ibb.co/qBPWrDH/franch-Fry6.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "648452878040adc7ca1fa67c",
         "title": "Hot Dog",
         "logo": "https://i.ibb.co/rdGVLwY/HotDOg.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Monica Lewis",
+                "name": "HotDOg",
                 "picture": "https://i.ibb.co/rdGVLwY/HotDOg.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Cameron Dillon",
+                "name": "Chiness HotDOg",
                 "picture": "https://i.ibb.co/WvFr2N1/hotdog2.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Workman Sanchez",
+                "name": "Indian HotDOg",
                 "picture": "https://i.ibb.co/FV7wKdH/hotdog3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Stuart Hensley",
+                "name": "IndoJapanis HotDOg",
                 "picture": "https://i.ibb.co/Qdy8HcQ/hotdog4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Wilcox Kelley",
+                "name": "MasallaHotDOg ",
                 "picture": "https://i.ibb.co/M9zMpT0/hotdog5.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "6484528761c8844516f22831",
         "title": "Roll",
         "logo": "https://i.ibb.co/YNsSbFy/Roll.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Nichols Woodard",
+                "name": "Roll",
                 "picture": "https://i.ibb.co/YNsSbFy/Roll.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Staci Ryan",
+                "name": "Chicken Roll",
                 "picture": "https://i.ibb.co/px3V3mg/Roll2.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Jacobs Cain",
+                "name": "Beef Roll",
                 "picture": "https://i.ibb.co/KWBj4KM/Roll3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Cochran Cobb",
+                "name": "Mutton Roll",
                 "picture": "https://i.ibb.co/j6Hy5Nd/Roll4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Clay Mccarty",
+                "name": "Vegitable Roll",
                 "picture": "https://i.ibb.co/D4B5B84/Roll5.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 5,
-                "name": "Parks Johns",
+                "name": "Special Roll",
                 "picture": "https://i.ibb.co/Dr8KV82/Roll6.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 6,
-                "name": "Mueller Ramirez",
+                "name": "Chicken Masala Roll",
                 "picture": "https://i.ibb.co/60SGKgM/Roll7.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 7,
-                "name": "Maria Vincent",
+                "name": "Chiness Roll",
                 "picture": "https://i.ibb.co/1s0tDKN/Roll8.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "64845287d91f693015110ab4",
         "title": "Sandwich",
         "logo": "https://i.ibb.co/3BWcLy9/Sandwich.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "Davidson Cole",
+                "name": "Sandwich",
                 "picture": "https://i.ibb.co/3BWcLy9/Sandwich.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Dunn Jones",
+                "name": "Mexican Sandwich",
                 "picture": "https://i.ibb.co/vdTN2b8/Sandwich1.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Carpenter Garcia",
+                "name": "Crimmy Sandwich",
                 "picture": "https://i.ibb.co/mCx1xpB/Sandwich2.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Dennis Burris",
+                "name": "Tomato Sandwich",
                 "picture": "https://i.ibb.co/nBM46Yn/Sandwich3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Bettye Ratliff",
+                "name": "Indo Sandwich",
                 "picture": "https://i.ibb.co/k0MGCgR/Sandwich4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 5,
-                "name": "Naomi Murphy",
+                "name": "Special Sandwich",
                 "picture": "https://i.ibb.co/xg618FD/Sandwich5.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 6,
-                "name": "Mcgowan Benson",
+                "name": "Hot Sandwich",
                 "picture": "https://i.ibb.co/YjLZn3c/Sandwich6.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 7,
-                "name": "Delgado Espinoza",
+                "name": "Masala Sandwich",
                 "picture": "https://i.ibb.co/W6GC8x4/Sandwich8.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     },
     {
-        "_id": "64845287b98643165feb9187",
         "title": "Coffee",
         "logo": "https://i.ibb.co/Zx4K6DN/Coffee.jpg",
         "items": [
             {
                 "id": 0,
-                "name": "David Chen",
+                "name": "American Coffee",
                 "picture": "https://i.ibb.co/Zx4K6DN/Coffee.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 1,
-                "name": "Terrie Vega",
+                "name": "Cold Coffee",
                 "picture": "https://i.ibb.co/V2f6GTt/Coffee1.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 2,
-                "name": "Owens Miranda",
+                "name": "Nestle Coffee",
                 "picture": "https://i.ibb.co/2FY2DTw/Coffee2.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 3,
-                "name": "Beulah Valdez",
+                "name": "Black Coffee",
                 "picture": "https://i.ibb.co/wCsncQc/Coffee3.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 4,
-                "name": "Moon Lamb",
+                "name": "Tatto Coffee",
                 "picture": "https://i.ibb.co/kKMHc3q/Coffee4.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 5,
-                "name": "Combs Dawson",
+                "name": "Wallpaper Coffee",
                 "picture": "https://i.ibb.co/zbP70Tt/Coffee5.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 6,
-                "name": "Haynes Powers",
+                "name": "Special Coffee",
                 "picture": "https://i.ibb.co/pw4Rqy8/Coffee6.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             },
             {
                 "id": 7,
-                "name": "Farmer Williamson",
+                "name": "Hot Coffee",
                 "picture": "https://i.ibb.co/b6nmsqF/Coffee7.jpg",
-                "price": 10
+                "price": 10,
+                "equpment": "tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,tomato,salad ,butter , creme, beef, korma,",
+                "process": "At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng.At first you can try it to ready a fan and then ready to know eveythimng."
             }
         ]
     }

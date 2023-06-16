@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
+
 import PopularItemsCard from "./PopularItemsCard";
 import { Fade } from "react-awesome-reveal";
+import { useQuery } from "react-query";
 
 const PopularItems = () => {
-    const [allItems, setAllItems] = useState([]);
-    useEffect(() => {
-        fetch("popularItem.json")
-            .then(res => res.json())
-            .then(data => {
-                setAllItems(data)
-            })
-    }, [])
+
+    // const [allItems, setAllItems] = useState([]);
+    // useEffect(() => {
+    //     fetch("popularItem.json")
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAllItems(data)
+    //         })
+    // }, [])
+
+    const { data: allItems = [] } = useQuery({
+        queryKey: ["AllPopularItem"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/allPopularItem`)
+            const data = res.json();
+            return data
+        }
+    })
+
     return (
         <div className="mx-4">
             <div className="mt-16 mb-6">

@@ -1,13 +1,15 @@
 import { RouterProvider } from "react-router-dom"
 import { router } from "./Routes/Routes/Routes"
+import { BsWhatsapp } from "react-icons/bs";
+import '../src/Pages/Home/Home.css'
+import ReactWhatsapp from "react-whatsapp";
 
 function App() {
-
 
   return (
     <div className="lg:w-11/12 md:w-11/12 mx-auto ">
 
-
+      <ReactWhatsapp number="+8801827717200" className="whatsapp_float animate-bounce hover:animate-none me-10 print:hidden" message="Hello World!!!" title="Contact with us"><BsWhatsapp className="mx-auto"></BsWhatsapp></ReactWhatsapp>
       <RouterProvider router={router}></RouterProvider>
     </div>
   )

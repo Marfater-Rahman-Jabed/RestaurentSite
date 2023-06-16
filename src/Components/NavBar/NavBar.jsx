@@ -1,15 +1,22 @@
 import { HiUserCircle } from "react-icons/hi";
 import Logos from "../../assets/Logo/Logo.jpg"
+import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
-      <div className="navbar  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 0" >
+      <div className="navbar  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 " >
         <div className="flex-1">
           <img src={Logos} alt="" className="rounded-full h-16 invisible lg:visible md:visible w-0 lg:w-16 md:w-16 " />
-          <a className="font-serif lg:text-4xl text-3xl font-bold text-fuchsia-700 lg:ms-4 md:ms-4"><i>Hungry  <span className="text-pink-700">Cafe</span></i></a>
+          <Link className="font-serif lg:text-4xl text-3xl font-bold text-fuchsia-700 lg:ms-4 md:ms-4  " to="/"><i>Hungry  <span className="text-pink-700">Cafe</span></i></Link>
+
+
+
         </div>
+        <Link to="/" className="me-6 text-xl font-serif font-bold invisible lg:visible md:visible text-fuchsia-700 "><i>Home</i></Link>
         <div className="flex-none">
-          <div className="dropdown dropdown-end">
+
+          <div className="dropdown dropdown-end print:hidden">
+
             <label tabIndex={0} className="btn btn-ghost btn-circle mr-6">
               <div className="indicator ">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
@@ -34,12 +41,15 @@ const NavBar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10">
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to="/">Home</Link>
               </li>
+              <li><a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a></li>
               <li><a>Settings</a></li>
+              <li><Link to='/register'>Register</Link></li>
+              <li><Link to='/login'>Login</Link></li>
               <li><a>Logout</a></li>
             </ul>
           </div>
