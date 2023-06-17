@@ -1,7 +1,11 @@
 import { HiUserCircle } from "react-icons/hi";
 import Logos from "../../assets/Logo/Logo.jpg"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContexts } from "../../Contexts/Contexts";
+
 const NavBar = () => {
+  const { user } = useContext(AuthContexts)
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
       <div className="navbar  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 " >
@@ -45,7 +49,7 @@ const NavBar = () => {
               </li>
               <li><a className="justify-between">
                 Profile
-                <span className="badge">New</span>
+                <span className="badge">{user}</span>
               </a></li>
               <li><a>Settings</a></li>
               <li><Link to='/register'>Register</Link></li>
