@@ -4,8 +4,19 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
 
+
 const NavBar = () => {
-  const { user } = useContext(AuthContexts)
+  const { user, LogOut } = useContext(AuthContexts)
+
+
+  const handleLogOut = () => {
+    LogOut()
+      .then(() => {
+        console.log('logged out')
+      })
+      .catch(error => console.log(error))
+  }
+
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
       <div className="navbar  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 " >
@@ -49,12 +60,15 @@ const NavBar = () => {
               </li>
               <li><a className="justify-between">
                 Profile
-                <span className="badge">{user}</span>
+                <span className="badge">{user?.email.split("@")[0]}</span>
               </a></li>
               <li><a>Settings</a></li>
-              <li><Link to='/register'>Register</Link></li>
-              <li><Link to='/login'>Login</Link></li>
-              <li><a>Logout</a></li>
+              {user ?
+                <li><button onClick={handleLogOut}>Logout</button></li> :
+                <>
+                  <li><Link to='/register'>Register</Link></li>
+                  <li><Link to='/login'>Login</Link></li>
+                </>}
             </ul>
           </div>
         </div>

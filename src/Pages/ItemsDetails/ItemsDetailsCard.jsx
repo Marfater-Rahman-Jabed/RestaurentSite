@@ -22,7 +22,7 @@ const ItemsDetailsCard = ({ item }) => {
                     <div className="card-actions justify-end">
                         {/* pass the props value with the Link router. as a result i dont need to load data again */}
                         <Link to={`/item/details/${item.id}`} state={{ item }}>
-                            <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">View Details</button></Link>
+                            <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white"> Details</button></Link>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Add to Cart</button>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Buy Product</button>
                     </div>
