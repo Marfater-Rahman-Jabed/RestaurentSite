@@ -8,11 +8,14 @@ import { BsDownload, BsPrinter } from "react-icons/bs";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 const CheckOut = () => {
     const { user } = useContext(AuthContexts);
     const pdfRef = useRef();
-
+    const location = useLocation();
+    const { cartData } = location.state;
+    console.log(cartData.length)
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 5)
     const date = moment().format("Do MMM YY");
@@ -60,18 +63,19 @@ const CheckOut = () => {
                 </div>
                 <hr />
                 <hr />
-                <div className="py-10 ">
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
-                    <h1 className="text-center">Table of order here</h1>
+                <h1 className="text-center text-2xl font-bold py-4 font-serif"><span className="text-fuchsia-700">Your Item</span> <span className="text-pink-700">Listed Here</span></h1>
+                <div className="grid grid-cols-1 gap-2 ">
+                    {
+                        cartData?.map((cart, i) => <div key={i} className="card card-side bg-base-100 shadow-xl h-32 border-2">
+                            <figure><img src={cart.picture} alt="Movie" /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">{cart.name}</h2>
+                                <div className="card-actions justify-end">
+                                    <button className="btn btn-primary">Watch</button>
+                                </div>
+                            </div>
+                        </div>)
+                    }
                 </div>
             </div>
         </div>
