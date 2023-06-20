@@ -1,12 +1,40 @@
 
+import { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
+import { AuthContexts } from '../../Contexts/Contexts';
+// import { useQuery } from 'react-query';
 
 const PopularItemsCard = ({ item }) => {
+    const { user } = useContext(AuthContexts)
+    // const { refetch } = useQuery(`http://localhost:5000/myCart?email=${user?.email}`)
 
-    const HandleAddCart = (id) => {
-        console.log("add to cart successfully", id)
+    // refetch(`http://localhost:5000/myCart?email=${user?.email}`)
+    const HandleAddCart = (items) => {
+        // console.log("add to cart successfully", items)
+        const cartData = {
+            email: user?.email,
+            name: items.name,
+            picture: items.picture,
+            discount: items.discount,
+            price: items.price
+        }
+        fetch(`http://localhost:5000/addToCart`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(cartData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                // refetch()
+                toast.success('SuccessFully add to Cart')
+            })
+
     }
 
     return (
@@ -30,7 +58,7 @@ const PopularItemsCard = ({ item }) => {
                     <div className="card-actions justify-end">
                         <Link to={`/item/details/${item._id}`} state={{ item }}>
                             <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Details</button></Link>
-                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " onClick={() => HandleAddCart(item._id)}>Add to Cart</button>
+                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " onClick={() => HandleAddCart(item)}>Add to Cart</button>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Buy Product</button>
                     </div>
                 </div>
