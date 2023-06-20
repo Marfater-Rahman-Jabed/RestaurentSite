@@ -5,12 +5,13 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContexts } from '../../Contexts/Contexts';
 import Loading from '../../Components/Loading/Loading';
+import { toast } from 'react-hot-toast';
 const Register = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    const { createUser, loading, setLoading } = useContext(AuthContexts)
+    const { createUser, loading, setLoading, updateUser } = useContext(AuthContexts)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
     const location = useLocation();
@@ -18,17 +19,55 @@ const Register = () => {
 
     const onsubmit = data => {
         console.log(data)
+
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true })
+                const profile = {
+                    displayName: data.name
+                }
+                updateUser(profile)
+                    .then(result => {
+                        // console.log(result)
+                        saveUser(data)
+                    })
+                    .catch(error => console.log(error))
+
+                toast.success('Register successfully');
+                navigate(from, { replace: true });
                 setLoading(false)
+
 
             })
             .catch(error => console.log(error))
 
     }
+
+    const saveUser = (data) => {
+
+        const details = {
+            userName: data.name,
+            email: data.email,
+
+        }
+
+        fetch(`http://localhost:5000/addUser`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+
+            },
+            body: JSON.stringify(details)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            })
+    }
+
+
     return (
         <div>
             <div className="hero min-h-screen  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 lg:py-4">

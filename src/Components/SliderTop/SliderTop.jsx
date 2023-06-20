@@ -6,14 +6,19 @@ import { useQuery } from "react-query";
 import { CiCircleMinus } from "react-icons/ci";
 // import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
+import { toast } from "react-hot-toast";
+import useAdmin from "../../Hooks/useAdmin";
+import { useContext } from "react";
+import { AuthContexts } from "../../Contexts/Contexts";
 
 
 
 
 const SliderTop = () => {
 
-    const imageKey = import.meta.env.VITE_imagekey
-
+    const imageKey = import.meta.env.VITE_imagekey;
+    const { user } = useContext(AuthContexts)
+    const [Admin] = useAdmin(user?.email)
     const { data: arr = [], refetch } = useQuery({
         queryKey: ['arr'],
         queryFn: async () => {
@@ -49,7 +54,9 @@ const SliderTop = () => {
                     })
                         .then(res => res.json())
                         .then(result => {
-                            console.log(result)
+                            console.log(result);
+                            toast.success('Successfully Added')
+
                             refetch()
                         })
                 }
@@ -60,14 +67,27 @@ const SliderTop = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/banner/${id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                refetch()
+        // alert()
+        console.log(arr.length)
+        const sure = window.confirm('Do you want to Delete This Banner ?');
+        // console.log(sure)
+
+
+        if (sure && arr.length > 1) {
+            fetch(`http://localhost:5000/banner/${id}`, {
+                method: "DELETE"
             })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    toast.success('Successfully Deleted Item')
+                    refetch()
+                })
+        }
+        else {
+            toast.error('You Must keep one items Banner')
+        }
+
     }
 
     // const handleAdd = () => {
@@ -91,18 +111,22 @@ const SliderTop = () => {
                 {
                     arr.map((arry, i) => <div key={i}>
                         <img src={arry.img} alt="" className="w-full lg:h-[75vh] md:h-72 h-64 " />
-                        <div className="flex justify-end">
-                            <button onClick={() => handleDelete(arry._id)} className="btn" title="Delete Banner"><CiCircleMinus className="text-xl"></CiCircleMinus></button>
+                        {
+                            Admin && <div className="flex justify-end">
+                                <button onClick={() => handleDelete(arry._id)} className="btn" title="Delete Banner"><CiCircleMinus className="text-xl"></CiCircleMinus></button>
 
-                        </div>
+                            </div>
+                        }
                     </div>)
                 }
 
             </Slider>
-            <form className="flex justify-end">
-                <input type="file" name="photo" id="takephoto" className="invisible" onChange={handleImage} />
-                <label htmlFor="takephoto" className="btn mt-1" title="ADD Banner"  ><BsPlusCircle className="text-xl"></BsPlusCircle></label>
-            </form>
+            {
+                Admin && <form className="flex justify-end">
+                    <input type="file" name="photo" id="takephoto" className="invisible" onChange={handleImage} />
+                    <label htmlFor="takephoto" className="btn mt-1" title="ADD Banner"  ><BsPlusCircle className="text-xl"></BsPlusCircle></label>
+                </form>
+            }
         </div>
 
     );

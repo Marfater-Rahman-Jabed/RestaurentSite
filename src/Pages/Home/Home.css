@@ -17,6 +17,10 @@
     margin-top: 16px;
 }
 
+.overfl {
+    overflow-x: clip;
+}
+
 /* for mobile */
 @media screen and (max-width: 767px) {
     .whatsapp-icon {

@@ -60,7 +60,7 @@ const NavBar = () => {
               </li>
               <li><a className="justify-between">
                 Profile
-                <span className="badge">{user?.email.split("@")[0]}</span>
+                <span className="badge" title={user?.displayName}>{user?.displayName ? user?.displayName.split(' ')[0] : user?.email.split("@")[0]}</span>
               </a></li>
               <li><a>Settings</a></li>
               {user ?
