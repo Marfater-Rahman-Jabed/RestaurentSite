@@ -16,7 +16,8 @@ const ItemsDetailsCard = ({ item }) => {
             picture: items.picture,
             discount: items.discount,
             price: items.price,
-            quantity: 1
+            quantity: 1,
+            totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         fetch(`http://localhost:5000/addToCart`, {
             method: 'POST',
@@ -41,7 +42,8 @@ const ItemsDetailsCard = ({ item }) => {
             picture: items.picture,
             discount: items.discount,
             price: items.price,
-            quantity: 1
+            quantity: 1,
+            totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         fetch(`http://localhost:5000/addToCart`, {
             method: 'POST',

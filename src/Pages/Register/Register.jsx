@@ -49,6 +49,8 @@ const Register = () => {
         const details = {
             userName: data.name,
             email: data.email,
+            phone: data.Phone,
+            address: data.Address
 
         }
 
@@ -72,7 +74,7 @@ const Register = () => {
         <div>
             <div className="hero min-h-screen  bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200 lg:py-4">
 
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-fuchsia-1S00">
+                <div className="card flex-shrink-0 w-[40vw] shadow-2xl bg-fuchsia-1S00">
                     <img src={Logo} alt="" className="rounded-full h-32 w-32 mx-auto mt-2" />
                     <h1 className="text-center text-xl font-serif font-bold"> <span className='text-fuchsia-700'>Register</span> <span className='text-pink-700'>Here</span></h1>
                     <div className="card-body pt-0">
@@ -83,21 +85,40 @@ const Register = () => {
                                 </label>
                                 <input type="text" placeholder="Name" {...register('name')} className="input input-bordered" required />
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-fuchsia-700 font-bold">Email</span>
-                                </label>
-                                <input type="text" placeholder="Email" {...register('email')} className="input input-bordered" required />
+                            <div className='flex justify-between'>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-fuchsia-700 font-bold">Email</span>
+                                    </label>
+                                    <input type="text" placeholder="Email" {...register('email')} className="input input-bordered " required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-fuchsia-700 font-bold">Password</span>
+                                    </label>
+                                    <input type="password" placeholder="Password" {...register('password')} className="input input-bordered" required />
+
+                                </div>
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-fuchsia-700 font-bold">Password</span>
-                                </label>
-                                <input type="password" placeholder="Password" {...register('password')} className="input input-bordered" required />
-                                <label className="label">
-                                    <span className='label-text-alt'>Already have an account ? <Link
-                                        to='/login' className="label-text-alt link link-hover">Login</Link></span>
-                                </label>
+                            <div className='flex justify-between'>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-fuchsia-700 font-bold">Phone</span>
+                                    </label>
+                                    <input type="number" placeholder="Phone" {...register('Phone')} className="input input-bordered" required />
+                                    <label className="label">
+                                        <span className='label-text-alt'>Already have an account ? <Link
+                                            to='/login' className="label-text-alt link link-hover">Login</Link></span>
+                                    </label>
+
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-fuchsia-700 font-bold">Address</span>
+                                    </label>
+                                    <input type="text" placeholder="Address" {...register('Address')} className="input input-bordered" required />
+
+                                </div>
                             </div>
                             <div className="form-control mt-6">
 
