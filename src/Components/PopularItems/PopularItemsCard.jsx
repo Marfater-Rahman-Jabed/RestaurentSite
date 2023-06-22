@@ -19,7 +19,8 @@ const PopularItemsCard = ({ item }) => {
             name: items.name,
             picture: items.picture,
             discount: items.discount,
-            price: items.price
+            price: items.price,
+            quantity: 1
         }
         fetch(`http://localhost:5000/addToCart`, {
             method: 'POST',
@@ -33,6 +34,31 @@ const PopularItemsCard = ({ item }) => {
                 console.log(data)
                 // refetch()
                 toast.success('SuccessFully add to Cart')
+            })
+
+    }
+    const HandleOrder = (items) => {
+        // console.log("add to cart successfully", items)
+        const cartData = {
+            email: user?.email,
+            name: items.name,
+            picture: items.picture,
+            discount: items.discount,
+            price: items.price,
+            quantity: 1
+        }
+        fetch(`http://localhost:5000/addToCart`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(cartData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                // refetch()
+                // toast.success('SuccessFully add to Cart'
             })
 
     }
@@ -59,7 +85,7 @@ const PopularItemsCard = ({ item }) => {
                         <Link to={`/item/details/${item._id}`} state={{ item }}>
                             <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Details</button></Link>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " onClick={() => HandleAddCart(item)}>Add to Cart</button>
-                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Buy Product</button>
+                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleOrder(item)}><Link to='/checkout'>Buy Product</Link></button>
                     </div>
                 </div>
             </div>

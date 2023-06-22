@@ -16,14 +16,7 @@ import { toast } from "react-hot-toast";
 const CheckOut = () => {
     const { user } = useContext(AuthContexts);
     const pdfRef = useRef();
-    // const location = useLocation();
-    // const { cartData, } = location.state;
-    // console.log(cartData.length)
-    // const unique_id = uuid();
-    // const small_id = unique_id.slice(0, 5)
     const date = moment().format("Do MMM YY");
-    // const time = moment().format('LTS');
-    // const { refetch } = useQuery()
     const { data: cartData = [], refetch } = useQuery({
         queryKey: ['cartData'],
         queryFn: async () => {
@@ -38,6 +31,33 @@ const CheckOut = () => {
         // refetch()
     })
     // 
+    const handleIncrease = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/quantity/${id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
+
+    const handleDecrease = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/decrease/${id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
     const handleDelete = (id) => {
 
         console.log(id)
@@ -104,6 +124,11 @@ const CheckOut = () => {
                                 <h1 className="text-2xl font-bold font-serif text-fuchsia-700" title={cart.name}>{cart.name.slice(0, 12)}</h1>
                                 <h1 className="text-xl font-bold font-serif">Price : {cart.price}</h1>
                                 <h1 className="text-xl font-bold font-serif">Discount : {cart?.discount > 0 ? cart?.discount : 'No'}{cart?.discount > 0 ? '%' : ''}</h1>
+                                <div className="flex justify-between items-center">
+                                    <button className="btn btn-sm bg-fuchsia-700 hover:bg-pink-700 text-xl text-white" onClick={() => handleDecrease(cart?._id)}>-</button>
+                                    <h1 className="text-xl font-bold text-pink-700">{cart?.quantity}</h1>
+                                    <button className="btn btn-sm bg-fuchsia-700 text-xl text-white hover:bg-pink-700" onClick={() => handleIncrease(cart?._id)}>+</button>
+                                </div>
 
                             </div>
                             <button className="lg:me-12 hover:bg-fuchsia-700 p-4 rounded-full" title="Delete Item" onClick={() => handleDelete(cart?._id)}><RiDeleteBinLine className="text-2xl"></RiDeleteBinLine></button>

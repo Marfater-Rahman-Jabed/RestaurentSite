@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 import useAdmin from "../../Hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
+import BigLoading from "../Loading/BigLoading";
 
 
 
@@ -17,7 +18,7 @@ import { AuthContexts } from "../../Contexts/Contexts";
 const SliderTop = () => {
 
     const imageKey = import.meta.env.VITE_imagekey;
-    const { user } = useContext(AuthContexts)
+    const { user, loading } = useContext(AuthContexts)
     const [Admin] = useAdmin(user?.email)
     const { data: arr = [], refetch } = useQuery({
         queryKey: ['arr'],
@@ -103,30 +104,35 @@ const SliderTop = () => {
         pauseOnHover: true,
 
     };
+    if (loading) {
+        return <BigLoading></BigLoading>
+    }
     return (
 
 
         <div>
-            <Slider {...settings} className="w-full  bg-cover">
+            <div>
+                <Slider {...settings} className="w-full  bg-cover">
+                    {
+                        arr.map((arry, i) => <div key={i}>
+                            <img src={arry.img} alt="" className="w-full lg:h-[75vh] md:h-72 h-64 " />
+                            {
+                                Admin && <div className="flex justify-end">
+                                    <button onClick={() => handleDelete(arry._id)} className="btn" title="Delete Banner"><CiCircleMinus className="text-xl"></CiCircleMinus></button>
+
+                                </div>
+                            }
+                        </div>)
+                    }
+
+                </Slider>
                 {
-                    arr.map((arry, i) => <div key={i}>
-                        <img src={arry.img} alt="" className="w-full lg:h-[75vh] md:h-72 h-64 " />
-                        {
-                            Admin && <div className="flex justify-end">
-                                <button onClick={() => handleDelete(arry._id)} className="btn" title="Delete Banner"><CiCircleMinus className="text-xl"></CiCircleMinus></button>
-
-                            </div>
-                        }
-                    </div>)
+                    Admin && <form className="flex justify-end">
+                        <input type="file" name="photo" id="takephoto" className="invisible" onChange={handleImage} />
+                        <label htmlFor="takephoto" className="btn mt-1" title="ADD Banner"  ><BsPlusCircle className="text-xl"></BsPlusCircle></label>
+                    </form>
                 }
-
-            </Slider>
-            {
-                Admin && <form className="flex justify-end">
-                    <input type="file" name="photo" id="takephoto" className="invisible" onChange={handleImage} />
-                    <label htmlFor="takephoto" className="btn mt-1" title="ADD Banner"  ><BsPlusCircle className="text-xl"></BsPlusCircle></label>
-                </form>
-            }
+            </div>
         </div>
 
     );
