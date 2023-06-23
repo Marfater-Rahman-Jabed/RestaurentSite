@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
 // import { v4 as uuid } from 'uuid';
 import moment from "moment/moment";
@@ -13,10 +13,13 @@ import { useRef } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-hot-toast";
 import Loading from "../../Components/Loading/Loading";
-import { Fade } from "react-awesome-reveal";
+// import { Fade } from "react-awesome-reveal";
 
 const CheckOut = () => {
-    const { user, setLoading, loading } = useContext(AuthContexts);
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    const { user, } = useContext(AuthContexts);
     const pdfRef = useRef();
     const date = moment().format("Do MMM YY");
     const { data: cartData = [], refetch } = useQuery({
@@ -105,21 +108,32 @@ const CheckOut = () => {
 
         });
     };
-
+    const [calculateLoading, setCalculateLoading] = useState(false)
     const [total, setTotal] = useState(0)
     const [kolok, setKolok] = useState(false)
     const calculateTotal = () => {
-        setLoading(true)
-        console.log(cartData)
-        const sum = cartData?.reduce((accumulator, object) => {
-            return accumulator + object.totalPrice;
-        }, 0)
-        setTotal(sum)
-        // refetch()
-        setLoading(false)
+        // setLoading(true)
+        setCalculateLoading(true)
+        fetch(`http://localhost:5000/cartCalculation?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setTotal(data.sum)
+                setCalculateLoading(false)
+                // refetch()
+            })
     }
+
+    const handleCashOn = () => {
+        toast.success('Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose')
+    }
+
+
+
+
+
     return (
-        <div className=" lg:mt-2 mb-10" ref={pdfRef}>
+        <div className=" lg:pt-2 pb-10 bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200" ref={pdfRef}>
             <div className="lg:w-[50vw] w-[95vw] mx-auto bg-gradient-to-r from-fuchsia-400 via-purple-300 to-pink-400 py-4  text-2xl text-center font-serif flex justify-center ">
                 <h1 className="text-3xl mr-16 flex items-center mb-2">Hungry Cafe Receipt</h1>
                 <div className="flex justify-end">
@@ -131,20 +145,20 @@ const CheckOut = () => {
             <div className="lg:mb-16 lg:mt-6">
                 <div className="lg:flex md:flex print:flex lg:mx-24 md:mx-24 mb-6 mt-4">
                     <div className="lg:w-1/2 mx-4">
-                        <h1 className="font-serif mb-2">Name : <span className="mx-2">{user?.displayName ? user?.displayName : user?.email.split('@')[0].toUpperCase()}</span></h1>
-                        <h1 className="font-serif mb-2">Email : <span className="font-bold mx-2">{user?.email}</span></h1>
-                        <h1 className="font-serif mb-2">Phone: <span className="mx-2">{userDetails?.phone ? userDetails.phone : "***********"}</span></h1>
+                        <h1 className="font-semibold text-xl mb-2">Name : <span className="mx-2">{user?.displayName ? user?.displayName : user?.email.split('@')[0].toUpperCase()}</span></h1>
+                        <h1 className="font-semibold text-xl mb-2">Email : <span className="font-bold mx-2">{user?.email}</span></h1>
+                        <h1 className="font-semibold text-xl mb-2">Phone: <span className="mx-2">{userDetails?.phone ? userDetails.phone : "***********"}</span></h1>
                     </div>
                     <div className="lg:w-1/2 mx-4">
-                        <h1 className="font-serif mb-2">Receipt: #online-{user?.email.split('@')[0].slice(0, 4)}{user?.phone ? user?.phone : 1239}</h1>
-                        <h1 className="font-serif mb-2">Date: {date}</h1>
-                        <h1 className="font-serif mb-2">Address: {userDetails?.address}</h1>
+                        <h1 className="font-semibold text-xl mb-2">Receipt: #online-{user?.email.split('@')[0].slice(0, 4)}{user?.phone ? user?.phone : 1239}</h1>
+                        <h1 className="font-semibold text-xl mb-2">Date: {date}</h1>
+                        <h1 className="font-semibold text-xl mb-2">Address: {userDetails?.address}</h1>
                     </div>
                 </div>
                 <hr />
                 <hr />
                 {
-                    cartData.length > 0 ? <h1 className="text-center text-2xl font-bold py-4 font-serif"><span className="text-fuchsia-700">Your Item</span> <span className="text-pink-700">Listed Here</span></h1> : <h1 className="text-center text-2xl font-bold py-4 font-serif"><span className="text-fuchsia-700">No Item</span> <span className="text-pink-700">You Select</span></h1>
+                    cartData.length > 0 ? <h1 className="text-center text-2xl font-bold py-4 font-serif"><span className="text-fuchsia-700">Your Item</span> <span className="text-pink-700">Listed Here</span></h1> : <h1 className="text-center text-2xl font-bold py-4 font-serif mb-[30vh]"><span className="text-fuchsia-700">No Item</span> <span className="text-pink-700">You Select</span></h1>
                 }
                 <div className="grid grid-cols-1 gap-2 mb-2">
                     {
@@ -168,15 +182,26 @@ const CheckOut = () => {
 
                         </div>)
                     }
-                    <hr />
-                    <hr />
+                    {
+                        cartData.length ? <><hr />
+                            <hr /></> : ''
+                    }
 
                 </div>
                 <div className="lg:w-[60vw] mx-auto text-center lg:me-52">
-                    <button className="btn bg-fuchsia-700 hover:bg-fuchsia-600 text-white font-bold mr-16 mb-2 print:hidden " onClick={() => { calculateTotal(); setKolok(true) }}>{loading ? <Loading></Loading> : 'CalCulate Total'}</button>
                     {
-                        kolok &&
-                        <Fade direction="down" delay={500}><h1 className="text-xl  font-bold  rounded-lg text-white bg-pink-700 p-4 print:text-black">Total Amount :  <span className="text-2xl">$ {total.toFixed(2)}</span></h1></Fade>
+                        cartData.length ? <button className="btn w-56 mb-4 bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white print:hidden" onClick={() => { setKolok(true); calculateTotal(); setCalculateLoading(true) }}>{calculateLoading ? <Loading></Loading> : 'CalCulate Total'}</button> : ''
+                    }
+                    {
+                        kolok && !calculateLoading &&
+                        <div className="border-4 border-dotted border-fuchsia-700 p-2">
+                            <h1 className="text-xl  font-bold  rounded-lg text-white bg-pink-700 p-4 print:text-black mb-2">Total Amount :  <span className="text-2xl">$ {total.toFixed(2)}</span></h1>
+                            <div className="flex justify-between">
+                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => { downloadPdf(); handleCashOn(); }}>Cash On Delivery</button>
+                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden">Online Payment</button>
+                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden">Gives Review</button>
+                            </div>
+                        </div>
                     }
 
                 </div>

@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
 import { useQuery } from "react-query";
+// import { useState } from "react";
+// import { useEffect } from "react";
 
 
 const NavBar = () => {
   const { user, LogOut } = useContext(AuthContexts)
-
+  // const [total, setTotal] = useState(0)
   const { data: cartData = [], refetch } = useQuery({
     queryKey: ['cartData'],
     queryFn: async () => {
@@ -32,6 +34,16 @@ const NavBar = () => {
       })
       .catch(error => console.log(error))
   }
+
+
+  // fetch(`http://localhost:5000/cartCalculation?email=${user?.email}`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     setTotal(data.sum)
+
+  //   })
+
 
   return (
     <div style={{ position: "sticky", top: 0, zIndex: 100 }}>
@@ -57,7 +69,7 @@ const NavBar = () => {
             <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow z-10">
               <div className="card-body">
                 <span className="font-bold text-lg">{cartData.length} Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                {/* <span className="text-info">Subtotal: ${total.toFixed(2)}</span> */}
                 <div className="card-actions">
                   <Link to='/checkout' className="btn btn-primary btn-block">View cart</Link>
                 </div>

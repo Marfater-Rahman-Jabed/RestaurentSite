@@ -5,12 +5,16 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../Contexts/Contexts';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import useAdmin from '../../Hooks/useAdmin';
+import { useQuery } from 'react-query';
+import { BsBookmarkHeartFill } from 'react-icons/bs';
 // import { useQuery } from 'react-query';
 
-const PopularItemsCard = ({ item }) => {
+const PopularItemsCard = ({ item, refetch }) => {
     const { user } = useContext(AuthContexts)
     // const { refetch } = useQuery(`http://localhost:5000/myCart?email=${user?.email}`)
-
+    const [Admin] = useAdmin(user?.email)
     // refetch(`http://localhost:5000/myCart?email=${user?.email}`)
     const HandleAddCart = (items) => {
         // console.log("add to cart successfully", items)
@@ -64,6 +68,20 @@ const PopularItemsCard = ({ item }) => {
             })
 
     }
+    const handleDelete = (id) => {
+        console.log(id)
+
+        fetch(`http://localhost:5000/popularDelete/${id}`, {
+            method: 'Delete'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Successfully Delete')
+                refetch()
+            })
+    }
+
 
     return (
         <div>
@@ -84,10 +102,19 @@ const PopularItemsCard = ({ item }) => {
                     <p className="font-bold">Price: ${item.price}</p>
 
                     <div className="card-actions justify-end">
+
+                        {Admin &&
+                            <div>
+                                <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white me-1" title='Delete Item' onClick={() => handleDelete(item._id)}><RiDeleteBinLine className="text-2xl"></RiDeleteBinLine></button>
+
+                            </div>
+
+                        }
                         <Link to={`/item/details/${item._id}`} state={{ item }}>
                             <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white">Details</button></Link>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " onClick={() => HandleAddCart(item)}>Add to Cart</button>
                         <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleOrder(item)}><Link to='/checkout'>Buy Product</Link></button>
+
                     </div>
                 </div>
             </div>

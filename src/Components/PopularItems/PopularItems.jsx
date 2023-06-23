@@ -14,7 +14,7 @@ const PopularItems = () => {
     //         })
     // }, [])
 
-    const { data: allItems = [] } = useQuery({
+    const { data: allItems = [], refetch } = useQuery({
         queryKey: ["AllPopularItem"],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/allPopularItem`)
@@ -34,7 +34,7 @@ const PopularItems = () => {
                 <Fade direction="left" delay={500}>
 
                     {
-                        allItems.map((item, i) => <PopularItemsCard key={i} item={item}></PopularItemsCard>)
+                        allItems.map((item, i) => <PopularItemsCard key={i} item={item} refetch={refetch}></PopularItemsCard>)
                     }
 
                 </Fade>
