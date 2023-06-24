@@ -27,20 +27,25 @@ const PopularItemsCard = ({ item, refetch }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        fetch(`http://localhost:5000/addToCart`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(cartData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                // refetch()
-                toast.success('SuccessFully add to Cart')
+        if (user) {
+            fetch(`http://localhost:5000/addToCart`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(cartData)
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    // refetch()
+                    toast.success('SuccessFully add to Cart')
+                })
 
+        }
+        else {
+            toast.error('Please Login First')
+        }
     }
     const HandleOrder = (items) => {
         // console.log("add to cart successfully", items)
@@ -53,19 +58,24 @@ const PopularItemsCard = ({ item, refetch }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        fetch(`http://localhost:5000/addToCart`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(cartData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                // refetch()
-                // toast.success('SuccessFully add to Cart'
+        if (user) {
+            fetch(`http://localhost:5000/addToCart`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(cartData)
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    // refetch()
+                    // toast.success('SuccessFully add to Cart'
+                })
+        }
+        else {
+            toast.error('Please Login First')
+        }
 
     }
     const handleDelete = (id) => {

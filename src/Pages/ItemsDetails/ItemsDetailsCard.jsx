@@ -1,16 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate, } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { toast } from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { BsBookmarkHeartFill } from "react-icons/bs";
+import { CgUnavailable } from "react-icons/cg";
+import { BsBookmarkHeartFill, BsFillCloudUploadFill } from "react-icons/bs";
 import useAdmin from "../../Hooks/useAdmin";
+// import { useQuery } from "react-query";
 const ItemsDetailsCard = ({ item }) => {
 
 
-    const { user } = useContext(AuthContexts)
+    const { user } = useContext(AuthContexts);
+    const navigate = useNavigate();
+    // const UrlId = window.location.pathname.split('/')[2];
+    // const { data: mydata = [], refetch } = useQuery({
+    //     queryKey: ['Datas'],
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/allItem/${UrlId}`)
+    //         const data = res.json()
+    //         return data;
+    //     }
+    // })
+
+    // console.log(id)
     const [Admin] = useAdmin(user?.email)
     const HandleAddCart = (items) => {
         console.log(items)
@@ -23,20 +36,27 @@ const ItemsDetailsCard = ({ item }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        fetch(`http://localhost:5000/addToCart`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(cartData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                // refetch()
-                toast.success('SuccessFully add to Cart')
+        if (user) {
+            fetch(`http://localhost:5000/addToCart`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(cartData)
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    // refetch()
+                    toast.success('SuccessFully add to Cart')
+                })
 
+        }
+        else {
+            toast.error('Please Login First')
+            // return <Navigate to="/login" state={{ from: location }} replace />
+
+        }
     }
     const HandleOrder = (items) => {
         console.log(items)
@@ -49,19 +69,25 @@ const ItemsDetailsCard = ({ item }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        fetch(`http://localhost:5000/addToCart`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(cartData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                // refetch()
-                // toast.success('SuccessFully add to Cart')
+        if (user) {
+            fetch(`http://localhost:5000/addToCart`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(cartData)
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    // refetch()
+                    // toast.success('SuccessFully add to Cart')
+                })
+        }
+        else {
+            toast.error('Please LogIn first')
+            // return <Navigate to="/login" state={{ from: location }} replace />
+        }
 
     }
 
@@ -81,20 +107,41 @@ const ItemsDetailsCard = ({ item }) => {
             })
     }
 
-    // const handleDelete = (id) => {
-    //     console.log(id)
-    //     fetch(`http://localhost:5000/items/${id}`, {
-    //         method: "put"
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //         })
+    const handleUnAvailabe = (id) => {
+        // console.log(id)
+        fetch(`http://localhost:5000/itemsDisable/${id}`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                // console.log("urlid", UrlId)
+                toast.success('Successfully Make Unavailable !!!')
+            })
+    }
 
-    // }
+    const handleAvailable = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/itemsMakeAble/${id}`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                // console.log("urlid", UrlId)
+                toast.success('Successfully Make Available !!!')
+            })
+    }
 
     return (
         <div>
+
             <div className="card  bg-gradient-to-r from-base-300 via-base-200 to-base-300 shadow-xl">
                 {/* <figure><img src={item.picture} alt="Shoes" className="h-52 w-full" /></figure> */}
                 <PhotoProvider >
@@ -112,7 +159,7 @@ const ItemsDetailsCard = ({ item }) => {
                             <p>{item.name}</p>
                             <p className="font-bold">Price: ${item.price}</p>
                         </div>
-                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " title='Add Popular Item' onClick={() => handlePopular(item)}><BsBookmarkHeartFill className="text-2xl"></BsBookmarkHeartFill></button>
+                        {Admin && item?.available == 0 ? '' : Admin && <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white " title='Add Popular Item' onClick={() => handlePopular(item)}><BsBookmarkHeartFill className="text-2xl"></BsBookmarkHeartFill></button>}
                     </div>
                     <div className="card-actions justify-end">
                         {/* pass the props value with the Link router. as a result i dont need to load data again */}
@@ -123,10 +170,14 @@ const ItemsDetailsCard = ({ item }) => {
                             // </div>
 
                         } */}
+                        {Admin && item?.available == 0 ? <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white px-4 " title="Make Available" onClick={() => handleAvailable(item._id)}><BsFillCloudUploadFill className="text-xl"></BsFillCloudUploadFill></button> : Admin && <button className="badge badge-outline py-4 hover:bg-red-500 hover:text-white px-4 " title="Make UnAvailable" onClick={() => handleUnAvailabe(item._id)}><CgUnavailable className="text-xl"></CgUnavailable></button>}
                         <Link to={`/item/details/${item._id}`} state={{ item }}>
                             <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white"> Details</button></Link>
-                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleAddCart(item)}>Add to Cart</button>
-                        <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleOrder(item)}><Link to='/checkout'>Buy Product</Link></button>
+                        {
+                            item?.available == 0 ? <span className=" badge badge-outline py-4 bg-red-700 text-white font-bold" aria-disabled>Unavailable Now</span> : <><button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleAddCart(item)}>Add to Cart</button>
+                                <button className="badge badge-outline py-4 hover:bg-blue-700 hover:text-white" onClick={() => HandleOrder(item)}><Link to='/checkout'>Buy Product</Link></button></>
+                        }
+
                     </div>
                 </div>
             </div>

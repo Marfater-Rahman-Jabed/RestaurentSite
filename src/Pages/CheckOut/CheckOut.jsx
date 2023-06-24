@@ -21,6 +21,7 @@ const CheckOut = () => {
     }, [])
     const { user, } = useContext(AuthContexts);
     const pdfRef = useRef();
+
     const date = moment().format("Do MMM YY");
     const { data: cartData = [], refetch } = useQuery({
         queryKey: ['cartData'],
@@ -128,10 +129,6 @@ const CheckOut = () => {
         toast.success('Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose')
     }
 
-
-
-
-
     return (
         <div className=" lg:pt-2 pb-10 bg-gradient-to-r from-amber-200 via-amber-300 to-amber-200" ref={pdfRef}>
             <div className="lg:w-[50vw] w-[95vw] mx-auto bg-gradient-to-r from-fuchsia-400 via-purple-300 to-pink-400 py-4  text-2xl text-center font-serif flex justify-center ">
@@ -147,12 +144,20 @@ const CheckOut = () => {
                     <div className="lg:w-1/2 mx-4">
                         <h1 className="font-semibold text-xl mb-2">Name : <span className="mx-2">{user?.displayName ? user?.displayName : user?.email.split('@')[0].toUpperCase()}</span></h1>
                         <h1 className="font-semibold text-xl mb-2">Email : <span className="font-bold mx-2">{user?.email}</span></h1>
-                        <h1 className="font-semibold text-xl mb-2">Phone: <span className="mx-2">{userDetails?.phone ? userDetails.phone : "***********"}</span></h1>
+                        <h1 className="font-semibold text-xl mb-2">Phone: <span className="mx-2">{userDetails?.phone ? userDetails.phone : <input className=" " placeholder="Set Your Phone Number" type="number" required></input>}</span></h1>
                     </div>
                     <div className="lg:w-1/2 mx-4">
                         <h1 className="font-semibold text-xl mb-2">Receipt: #online-{user?.email.split('@')[0].slice(0, 4)}{user?.phone ? user?.phone : 1239}</h1>
                         <h1 className="font-semibold text-xl mb-2">Date: {date}</h1>
-                        <h1 className="font-semibold text-xl mb-2">Address: {userDetails?.address}</h1>
+                        <h1 className="font-semibold text-xl mb-2">Address: {userDetails?.address ? userDetails?.address : <select className="select select-bordered select-sm w-full max-w-xs ">
+                            <option selected>Dhaka</option>
+                            <option>Chittagong</option>
+                            <option>Comilla</option>
+                            <option>Rajshahi</option>
+                            <option>Sylhet</option>
+                            <option>Rangpur</option>
+                            <option>Barishal</option>
+                        </select>}</h1>
                     </div>
                 </div>
                 <hr />

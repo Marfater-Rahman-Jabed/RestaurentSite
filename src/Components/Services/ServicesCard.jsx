@@ -58,7 +58,7 @@ function ServicesCard() {
             </Fade>
             <Slider {...settings} className="">
                 {
-                    dataItem.map((item, i) => <Link key={i} to={`/allItem/${item._id}`}>
+                    dataItem.map((item, i) => <Link key={i} to={`/allItem/${item._id}`} >
                         <div >
                             <img src={item.logo} alt="" title={item.title} className="h-52 w-11/12 mx-auto" />
                             <h1 className="text-2xl text-center font-serif font-bold text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-700 to-pink-800">{item.title}</h1>

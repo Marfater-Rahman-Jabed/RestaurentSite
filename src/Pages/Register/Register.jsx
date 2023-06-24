@@ -6,12 +6,18 @@ import { useContext } from 'react';
 import { AuthContexts } from '../../Contexts/Contexts';
 import Loading from '../../Components/Loading/Loading';
 import { toast } from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
+// import "firebase/auth";
+// import firebase from "firebase/app";
+// // import "firebase/auth";
+// import { getAuth } from 'firebase/auth';
+// import app from '../../Firebase/Firebase.config';
 const Register = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    const { createUser, loading, setLoading, updateUser } = useContext(AuthContexts)
+    const { createUser, loading, setLoading, updateUser, googleLogIn } = useContext(AuthContexts)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
     const location = useLocation();
@@ -19,7 +25,9 @@ const Register = () => {
 
     const onsubmit = data => {
         console.log(data)
-
+        // const auth = getAuth(app)
+        // const isValidEmail = firebase.auth.validateEmail(data.email);
+        // console.log(isValidEmail)
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -69,6 +77,18 @@ const Register = () => {
             })
     }
 
+    const handleGoogle = () => {
+        googleLogIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, { replace: true })
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return (
         <div>
@@ -123,8 +143,10 @@ const Register = () => {
                             <div className="form-control mt-6">
 
                                 <button className="btn  bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white">{loading ? <Loading></Loading> : "Register"}</button>
+                                <div className="divider ">OR</div>
                             </div>
                         </form>
+                        <button className="btn  btn-outline hover:bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700 " onClick={handleGoogle}>{<><FcGoogle className='text-3xl '></FcGoogle> <h1>Contnue With Google</h1></>}</button>
                     </div>
                 </div>
             </div>
