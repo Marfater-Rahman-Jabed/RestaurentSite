@@ -7,6 +7,7 @@ import { AuthContexts } from '../../Contexts/Contexts';
 import Loading from '../../Components/Loading/Loading';
 import { toast } from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { useState } from 'react';
 // import "firebase/auth";
 // import firebase from "firebase/app";
 // // import "firebase/auth";
@@ -17,39 +18,49 @@ const Register = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    const { createUser, loading, setLoading, updateUser, googleLogIn } = useContext(AuthContexts)
+    const { createUser, loading, setLoading, updateUser, googleLogIn, verificationEmail } = useContext(AuthContexts)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
-
+    const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState('')
+    // const [email, setEmail] = useState(null)
     const onsubmit = data => {
-        console.log(data)
+        console.log(data);
+
         // const auth = getAuth(app)
         // const isValidEmail = firebase.auth.validateEmail(data.email);
         // console.log(isValidEmail)
+
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                const profile = {
-                    displayName: data.name
-                }
-                updateUser(profile)
-                    .then(result => {
+                verificationEmail()
+                    .then(() => {
                         // console.log(result)
-                        saveUser(data)
-                    })
-                    .catch(error => console.log(error))
+                        toast.success('varification Email send . Please Click the given Link')
+                        const profile = {
+                            displayName: data.name
+                        }
+                        updateUser(profile)
+                            .then(result => {
+                                // console.log(result)
+                                saveUser(data)
+                            })
+                            .catch(error => console.log(error))
 
-                toast.success('Register successfully');
-                navigate(from, { replace: true });
-                setLoading(false)
+                        // toast.success('Register successfully');
+                        navigate('/login');
+                        setLoading(false)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
 
 
             })
             .catch(error => console.log(error))
-
     }
 
     const saveUser = (data) => {
@@ -110,7 +121,7 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text text-fuchsia-700 font-bold">Email</span>
                                     </label>
-                                    <input type="text" placeholder="Email" {...register('email')} className="input input-bordered " required />
+                                    <input type="text" placeholder="Email" {...register('email')} className="input input-bordered " onChange={() => setError('')} required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -141,7 +152,7 @@ const Register = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
-
+                                <h1 className='text-red-700 text-center font-bold text-xl mb-2'>{error}</h1>
                                 <button className="btn  bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white">{loading ? <Loading></Loading> : "Register"}</button>
                                 <div className="divider ">OR</div>
                             </div>

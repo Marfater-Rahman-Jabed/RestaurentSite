@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom';
 import { AuthContexts } from '../../Contexts/Contexts';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import useAdmin from '../../Hooks/useAdmin';
-import { useQuery } from 'react-query';
-import { BsBookmarkHeartFill } from 'react-icons/bs';
+// import { useQuery } from 'react-query';
+// import { BsBookmarkHeartFill } from 'react-icons/bs';
 // import { useQuery } from 'react-query';
 
 const PopularItemsCard = ({ item, refetch }) => {
     const { user } = useContext(AuthContexts)
     // const { refetch } = useQuery(`http://localhost:5000/myCart?email=${user?.email}`)
+    // console.log(user?.emailVerified)
     const [Admin] = useAdmin(user?.email)
     // refetch(`http://localhost:5000/myCart?email=${user?.email}`)
     const HandleAddCart = (items) => {
@@ -27,7 +28,7 @@ const PopularItemsCard = ({ item, refetch }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        if (user) {
+        if (user?.emailVerified) {
             fetch(`http://localhost:5000/addToCart`, {
                 method: 'POST',
                 headers: {
@@ -58,7 +59,7 @@ const PopularItemsCard = ({ item, refetch }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        if (user) {
+        if (user?.emailVerified) {
             fetch(`http://localhost:5000/addToCart`, {
                 method: 'POST',
                 headers: {
@@ -82,7 +83,7 @@ const PopularItemsCard = ({ item, refetch }) => {
         console.log(id)
 
         fetch(`http://localhost:5000/popularDelete/${id}`, {
-            method: 'Delete'
+            method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {

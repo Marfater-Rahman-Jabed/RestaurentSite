@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
 import { useQuery } from "react-query";
+import useAdmin from "../../Hooks/useAdmin";
+import { FiLogOut } from 'react-icons/fi';
+import { CgProfile } from "react-icons/cg";
+import { AiOutlineHome } from "react-icons/ai";
+import { BiLogIn } from "react-icons/bi";
+import { SiReacthookform } from "react-icons/si";
+import { toast } from "react-hot-toast";
 // import { useState } from "react";
 // import { useEffect } from "react";
 
@@ -11,6 +18,7 @@ import { useQuery } from "react-query";
 const NavBar = () => {
   const { user, LogOut } = useContext(AuthContexts)
   // const [total, setTotal] = useState(0)
+  const [Admin] = useAdmin(user?.email)
   const { data: cartData = [], refetch } = useQuery({
     queryKey: ['cartData'],
     queryFn: async () => {
@@ -30,6 +38,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     LogOut()
       .then(() => {
+        toast.success('LogOut SuccessFull !!!')
         console.log('logged out')
       })
       .catch(error => console.log(error))
@@ -84,18 +93,20 @@ const NavBar = () => {
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10">
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/"><AiOutlineHome></AiOutlineHome>Home</Link>
               </li>
-              <li><a className="justify-between">
-                Profile
+              {user?.emailVerified && <li><Link to='/profile'>
+                <CgProfile></CgProfile> Profile
                 <span className="badge" title={user?.displayName}>{user?.displayName ? user?.displayName.split(' ')[0] : user?.email.split("@")[0]}</span>
-              </a></li>
-              <li><a>Settings</a></li>
-              {user ?
-                <li><button onClick={handleLogOut}>Logout</button></li> :
+              </Link></li>}
+              {
+                Admin && <li><a>Settings</a></li>
+              }
+              {user?.emailVerified ?
+                <li ><button onClick={handleLogOut}> <FiLogOut></FiLogOut>Logout</button></li> :
                 <>
-                  <li><Link to='/register'>Register</Link></li>
-                  <li><Link to='/login'>Login</Link></li>
+                  <li><Link to='/register'><SiReacthookform></SiReacthookform>Registration</Link></li>
+                  <li><Link to='/login'><BiLogIn></BiLogIn>Login</Link></li>
                 </>}
             </ul>
           </div>

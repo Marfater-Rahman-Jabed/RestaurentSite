@@ -36,7 +36,7 @@ const ItemsDetailsCard = ({ item }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        if (user) {
+        if (user?.emailVerified) {
             fetch(`http://localhost:5000/addToCart`, {
                 method: 'POST',
                 headers: {
@@ -69,7 +69,7 @@ const ItemsDetailsCard = ({ item }) => {
             quantity: 1,
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
-        if (user) {
+        if (user?.emailVerified) {
             fetch(`http://localhost:5000/addToCart`, {
                 method: 'POST',
                 headers: {

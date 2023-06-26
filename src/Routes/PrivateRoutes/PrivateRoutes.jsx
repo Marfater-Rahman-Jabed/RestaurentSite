@@ -11,7 +11,7 @@ const PrivateRoutes = ({ children }) => {
         return <BigLoading></BigLoading>
     }
 
-    if (!user) {
+    if (!user?.emailVerified) {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
     return children;

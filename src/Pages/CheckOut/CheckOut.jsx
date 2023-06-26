@@ -13,6 +13,8 @@ import { useRef } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-hot-toast";
 import Loading from "../../Components/Loading/Loading";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import ReviewModal from "../../Components/ReviewModal/ReviewModal";
 // import { Fade } from "react-awesome-reveal";
 
 const CheckOut = () => {
@@ -147,16 +149,16 @@ const CheckOut = () => {
                         <h1 className="font-semibold text-xl mb-2">Phone: <span className="mx-2">{userDetails?.phone ? userDetails.phone : <input className=" " placeholder="Set Your Phone Number" type="number" required></input>}</span></h1>
                     </div>
                     <div className="lg:w-1/2 mx-4">
-                        <h1 className="font-semibold text-xl mb-2">Receipt: #online-{user?.email.split('@')[0].slice(0, 4)}{user?.phone ? user?.phone : 1239}</h1>
+                        <h1 className="font-semibold text-xl mb-2">Receipt: #online-{user?.email.split('@')[0].slice(0, 4)}{userDetails?.phone ? userDetails.phone.slice(-5) : 12345}</h1>
                         <h1 className="font-semibold text-xl mb-2">Date: {date}</h1>
                         <h1 className="font-semibold text-xl mb-2">Address: {userDetails?.address ? userDetails?.address : <select className="select select-bordered select-sm w-full max-w-xs ">
-                            <option selected>Dhaka</option>
-                            <option>Chittagong</option>
-                            <option>Comilla</option>
-                            <option>Rajshahi</option>
-                            <option>Sylhet</option>
-                            <option>Rangpur</option>
-                            <option>Barishal</option>
+                            <option defaultValue='Dhaka'>Dhaka</option>
+                            <option value='chittagong'>Chittagong</option>
+                            <option value='Comilla'>Comilla</option>
+                            <option value='Rajshahi'>Rajshahi</option>
+                            <option value='Sylhet'>Sylhet</option>
+                            <option value='Rangpur'>Rangpur</option>
+                            <option value='Barishal'>Barishal</option>
                         </select>}</h1>
                     </div>
                 </div>
@@ -168,7 +170,12 @@ const CheckOut = () => {
                 <div className="grid grid-cols-1 gap-2 mb-2">
                     {
                         cartData?.map((cart, i) => <div key={i} className="flex justify-between border-2 items-center lg:w-[60vw] mx-auto bg-base-300 gap-2" >
-                            <img src={cart.picture} alt="" className="lg:w-64 w-32 lg:h-full h-32" />
+                            {/* <img src={cart.picture} alt=""  /> */}
+                            <PhotoProvider>
+                                <PhotoView src={cart?.picture}>
+                                    <img src={cart?.picture} alt="" className="lg:w-64 w-32 lg:h-full h-32" />
+                                </PhotoView>
+                            </PhotoProvider>
                             <div className="lg:me-16">
                                 <h1 className="lg:text-2xl text-xl font-bold font-serif text-fuchsia-700" title={cart.name}>{cart.name.slice(0, 12)}</h1>
                                 <h1 className="lg:text-xl font-bold font-serif">Price : {cart?.price}</h1>
@@ -204,12 +211,16 @@ const CheckOut = () => {
                             <div className="flex justify-between">
                                 <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => { downloadPdf(); handleCashOn(); }}>Cash On Delivery</button>
                                 <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden">Online Payment</button>
-                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden">Gives Review</button>
+
+                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => window.my_modal_3.showModal()}>Gives Review</button>
                             </div>
                         </div>
                     }
 
                 </div>
+                {
+                    <ReviewModal></ReviewModal>
+                }
             </div>
         </div>
     );

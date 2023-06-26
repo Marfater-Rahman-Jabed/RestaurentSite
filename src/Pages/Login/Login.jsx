@@ -13,25 +13,39 @@ const Login = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    const { LogIn, loading, setLoading, googleLogIn, forgotPass } = useContext(AuthContexts);
+    const { LogIn, loading, setLoading, googleLogIn, forgotPass, verificationEmail } = useContext(AuthContexts);
     const [userEmail, setUserEmail] = useState(null)
+    const [verify, setverify] = useState('')
+    const [error, setError] = useState('')
     // console.log(userEmail)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
     const onsubmit = data => {
-
+        console.log(data.email)
         LogIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
-                navigate(from, { replace: true })
-                setLoading(false)
+                if (user?.emailVerified) {
+                    console.log(user)
+                    toast.success('Successfully Login !!!')
+                    navigate(from, { replace: true })
+                    setLoading(false)
+                }
+                else {
+                    console.log(user)
+                    setverify('verify')
+                    toast.error('Please Verified Your Email')
+                    setLoading(false)
+                }
+
 
             })
             .catch(error => {
                 console.log(error)
+                setLoading(false)
+                setError(error.message)
             })
     }
 
@@ -57,6 +71,16 @@ const Login = () => {
                 console.log(error)
                 setLoading(false)
                 toast.error('Please provide Valid Email Address')
+            })
+    }
+
+    const handleVerification = () => {
+        verificationEmail()
+            .then(() => {
+                toast.success(' Resend varification Email. Please Click the given Link')
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 
@@ -91,6 +115,12 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
+                                {
+                                    verify && <button className='btn btn-sm bg-red-500 text-white hover:bg-red-600' onClick={handleVerification}>Resend Verification Mail</button>
+                                }
+                                {
+                                    error && <h1 className='text-center mb-2 text-red-600'>{error.split('/')[1].slice(0, -2)}</h1>
+                                }
                                 <button className="btn  bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white">{loading ? <Loading></Loading> : 'Login'}</button>
                                 <div className="divider">OR</div>
 

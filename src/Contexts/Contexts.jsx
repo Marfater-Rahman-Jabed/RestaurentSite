@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, deleteUser, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, deleteUser, getAuth, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 
 import app from '../Firebase/Firebase.config';
 
@@ -31,6 +31,11 @@ const Contexts = ({ children }) => {
         return sendPasswordResetEmail(auth, email)
     }
 
+    const verificationEmail = () => {
+        setLoading(true)
+        return sendEmailVerification(auth.currentUser)
+    }
+
     const LogOut = () => {
         setLoading(true)
         return signOut(auth);
@@ -55,7 +60,7 @@ const Contexts = ({ children }) => {
     }, [])
 
     const authinfo = {
-        user, createUser, LogIn, LogOut, updateUser, loading, setLoading, googleLogIn, deleteUsers, forgotPass
+        user, createUser, LogIn, LogOut, updateUser, loading, setLoading, googleLogIn, deleteUsers, forgotPass, verificationEmail
     }
     return (
         <AuthContexts.Provider value={authinfo}>
