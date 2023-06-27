@@ -8,6 +8,9 @@ import Login from "../../Pages/Login/Login";
 import CheckOut from "../../Pages/CheckOut/CheckOut";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Profile from "../../Pages/Profile/Profile";
+import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
+import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
+import AllReview from "../../Pages/DashBoard/AllReview/AllReview";
 
 export const router = createBrowserRouter([
     {
@@ -45,5 +48,19 @@ export const router = createBrowserRouter([
                 element: <Profile></Profile>
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <DashBoard></DashBoard>
+            }, {
+                path: '/dashboard/allReview',
+                element: <AllReview></AllReview>
+            }
+        ]
+
     }
 ])

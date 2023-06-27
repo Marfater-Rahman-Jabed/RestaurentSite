@@ -1,18 +1,28 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import Slider from "react-slick";
 import ClientReviewCard from "./ClientReviewCard";
+import { useQuery } from "react-query";
 
 
 function ClientReview() {
-    const [items, setItems] = useState([]);
-    useEffect(() => {
-        fetch("clientReview.json")
-            .then(res => res.json())
-            .then(data => {
-                setItems(data)
-            })
-    }, [])
+    // const [items, setItems] = useState([]);
+    // useEffect(() => {
+    //     fetch("clientReview.json")
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setItems(data)
+    //         })
+    // }, [])
+    const { data: Items = [] } = useQuery({
+        queryKey: ['allReview'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/allReview`)
+            const data = res.json();
+            return data;
+        }
+
+    })
     const settings = {
         className: "center",
         infinite: true,
@@ -55,7 +65,7 @@ function ClientReview() {
             </Fade>
             <Slider {...settings} className="lg:mx-12 md:mx-14 mx-14">
                 {
-                    items.map((item, i) => <ClientReviewCard key={i} item={item}></ClientReviewCard>)
+                    Items.filter(review => review?.display).map((item, i) => <ClientReviewCard key={i} item={item}></ClientReviewCard>)
                 }
             </Slider>
         </div >

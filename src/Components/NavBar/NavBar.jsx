@@ -1,7 +1,7 @@
 import { HiUserCircle } from "react-icons/hi";
 import Logos from "../../assets/Logo/Logo.jpg"
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContexts } from "../../Contexts/Contexts";
 import { useQuery } from "react-query";
 import useAdmin from "../../Hooks/useAdmin";
@@ -10,6 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { SiReacthookform } from "react-icons/si";
+import { RxDashboard } from "react-icons/rx";
 import { toast } from "react-hot-toast";
 // import { useState } from "react";
 // import { useEffect } from "react";
@@ -17,6 +18,8 @@ import { toast } from "react-hot-toast";
 
 const NavBar = () => {
   const { user, LogOut } = useContext(AuthContexts)
+  const [close, setClose] = useState(false);
+  // console.log(close)
   // const [total, setTotal] = useState(0)
   const [Admin] = useAdmin(user?.email)
   const { data: cartData = [], refetch } = useQuery({
@@ -71,17 +74,21 @@ const NavBar = () => {
 
             <label tabIndex={0} className="btn btn-ghost btn-circle mr-6">
               <div className="indicator ">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 " fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => setClose(true)}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                 <span className="badge badge-md indicator-item text-white   bg-red-500 ">{cartData.length}</span>
               </div>
             </label>
             <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow z-10">
               <div className="card-body">
-                <span className="font-bold text-lg">{cartData.length} Items</span>
-                {/* <span className="text-info">Subtotal: ${total.toFixed(2)}</span> */}
-                <div className="card-actions">
-                  <Link to='/checkout' className="btn btn-primary btn-block">View cart</Link>
-                </div>
+                {
+                  close && <>
+                    <span className="font-bold text-3xl text-center">{cartData.length} Items</span>
+                    {/* <span className="text-info">Subtotal: ${total.toFixed(2)}</span> */}
+                    <div className="card-actions">
+                      <Link to='/checkout' className="btn btn-primary btn-block" onClick={() => setClose(false)}>View cart</Link>
+                    </div>
+                  </>
+                }
               </div>
             </div>
           </div>
@@ -100,7 +107,7 @@ const NavBar = () => {
                 <span className="badge" title={user?.displayName}>{user?.displayName ? user?.displayName.split(' ')[0] : user?.email.split("@")[0]}</span>
               </Link></li>}
               {
-                Admin && <li><a>Settings</a></li>
+                Admin && <li><Link to='/dashboard'><RxDashboard></RxDashboard>Dashboard</Link></li>
               }
               {user?.emailVerified ?
                 <li ><button onClick={handleLogOut}> <FiLogOut></FiLogOut>Logout</button></li> :
