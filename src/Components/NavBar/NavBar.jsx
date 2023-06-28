@@ -11,6 +11,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { SiReacthookform } from "react-icons/si";
 import { RxDashboard } from "react-icons/rx";
+import { BsBell } from "react-icons/bs";
 import { toast } from "react-hot-toast";
 // import { useState } from "react";
 // import { useEffect } from "react";
@@ -27,7 +28,7 @@ const NavBar = () => {
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/myCart?email=${user?.email}`, {
         headers: {
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
+          'content-type': 'application/json'
         }
       });
       const data = res.json();
@@ -37,6 +38,20 @@ const NavBar = () => {
   })
 
   refetch(`http://localhost:5000/myCart?email=${user?.email}`)
+
+  const { data: OrderData = [] } = useQuery({
+    queryKey: ['OrderData'],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/allOrders`, {
+        headers: {
+          'content-type': 'application/json'
+        }
+      });
+      const data = res.json();
+      return data;
+    },
+    // refetch()
+  })
 
   const handleLogOut = () => {
     LogOut()
@@ -69,15 +84,43 @@ const NavBar = () => {
         </div>
         <Link to="/" className="me-6 text-xl font-serif font-bold invisible lg:visible md:visible text-fuchsia-700 "><i>Home</i></Link>
         <div className="flex-none">
+          {
+            Admin &&
+            <div className="dropdown dropdown-end print:hidden">
 
+              <label tabIndex={0} className="btn btn-ghost btn-circle mr-4">
+                <div className="indicator ">
+                  <BsBell className="text-4xl" onClick={() => setClose(true)}></BsBell>
+                  <span className="badge badge-lg indicator-item text-white   bg-red-500 ">{OrderData.length}</span>
+                </div>
+              </label>
+
+              <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow z-10">
+                <div className="card-body">
+                  {
+                    close && <>
+                      <span className="font-bold text-3xl text-center">{OrderData.length} orders</span>
+                      {/* <span className="text-info">Subtotal: ${total.toFixed(2)}</span> */}
+                      <div className="card-actions">
+                        <Link to='/dashboard/allOrders' className="btn btn-primary btn-block" onClick={() => setClose(false)}>View order</Link>
+                      </div>
+                    </>
+                  }
+                </div>
+              </div>
+            </div>
+          }
           <div className="dropdown dropdown-end print:hidden">
 
-            <label tabIndex={0} className="btn btn-ghost btn-circle mr-6">
+            <label tabIndex={0} className="btn btn-ghost btn-circle mr-4">
               <div className="indicator ">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 " fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => setClose(true)}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                <span className="badge badge-md indicator-item text-white   bg-red-500 ">{cartData.length}</span>
+                {cartData?.length ?
+                  <span className="badge badge-md indicator-item text-white   bg-red-500 ">{cartData.length}</span> : ''
+                }
               </div>
             </label>
+
             <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow z-10">
               <div className="card-body">
                 {

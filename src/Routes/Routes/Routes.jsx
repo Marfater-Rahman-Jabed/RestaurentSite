@@ -11,6 +11,7 @@ import Profile from "../../Pages/Profile/Profile";
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import AllReview from "../../Pages/DashBoard/AllReview/AllReview";
+import AllOrders from "../../Pages/DashBoard/AllOrders/AllOrders";
 
 export const router = createBrowserRouter([
     {
@@ -56,9 +57,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <DashBoard></DashBoard>
-            }, {
+            },
+            {
                 path: '/dashboard/allReview',
                 element: <AllReview></AllReview>
+            },
+            {
+                path: '/dashboard/allOrders',
+                element: <AllOrders></AllOrders>
             }
         ]
 

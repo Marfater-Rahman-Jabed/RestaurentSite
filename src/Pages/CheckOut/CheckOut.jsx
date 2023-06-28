@@ -127,8 +127,30 @@ const CheckOut = () => {
             })
     }
 
-    const handleCashOn = () => {
-        toast.success('Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose')
+    const handleCashOn = (data, total, phone, email, address, name) => {
+
+        console.log(data, total)
+        const orderDetails = {
+            itemDetails: data,
+            OvarAllPrice: total,
+            phone: phone,
+            email: email,
+            address: address,
+            name: name,
+            process: 'no'
+        }
+        fetch(`http://localhost:5000/createOrder`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(orderDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Your Order Created !!! . Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose')
+            })
     }
 
     return (
@@ -209,7 +231,7 @@ const CheckOut = () => {
                         <div className="border-4 border-dotted border-fuchsia-700 p-2">
                             <h1 className="text-xl  font-bold  rounded-lg text-white bg-pink-700 p-4 print:text-black mb-2">Total Amount :  <span className="text-2xl">$ {total.toFixed(2)}</span></h1>
                             <div className="flex justify-between">
-                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => { downloadPdf(); handleCashOn(); }}>Cash On Delivery</button>
+                                <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => { downloadPdf(); handleCashOn(cartData, total.toFixed(2), userDetails?.phone, user?.email, userDetails?.address, user?.displayName); }}>Cash On Delivery</button>
                                 <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden">Online Payment</button>
 
                                 <button className="btn bg-gradient-to-r from-fuchsia-600 via-pink-600 to-fuchsia-700  text-white lg:w-44 w-24 print:hidden" onClick={() => window.my_modal_3.showModal()}>Gives Review</button>

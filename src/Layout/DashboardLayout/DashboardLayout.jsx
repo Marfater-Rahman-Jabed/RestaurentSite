@@ -21,7 +21,7 @@ const DashboardLayout = () => {
                         <li className="text-2xl font-bold mb-4 text-fuchsia-700">Select Your Query</li>
                         <li className=" mt-4 font-serif  text-xl"><Link to='/dashboard'>All User</Link></li>
                         <li className="  font-serif text-xl"><Link to='/dashboard/allReview'>All Review</Link></li>
-                        <li className="  font-serif text-xl"><a>All Order</a></li>
+                        <li className="  font-serif text-xl"><Link to='/dashboard/allOrders'>All Orders</Link></li>
 
 
                     </ul>
