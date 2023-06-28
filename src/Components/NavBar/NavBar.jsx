@@ -13,16 +13,21 @@ import { SiReacthookform } from "react-icons/si";
 import { RxDashboard } from "react-icons/rx";
 import { BsBell } from "react-icons/bs";
 import { toast } from "react-hot-toast";
-// import { useState } from "react";
-// import { useEffect } from "react";
+import { useEffect } from "react";
+
 
 
 const NavBar = () => {
   const { user, LogOut } = useContext(AuthContexts)
   const [close, setClose] = useState(false);
-  // console.log(close)
-  // const [total, setTotal] = useState(0)
+
   const [Admin] = useAdmin(user?.email)
+
+  // function refetchTwoUrls(url1, url2) {
+  //   refetch(url1);
+  //   refetch(url2);
+  // }
+
   const { data: cartData = [], refetch } = useQuery({
     queryKey: ['cartData'],
     queryFn: async () => {
@@ -34,24 +39,38 @@ const NavBar = () => {
       const data = res.json();
       return data;
     },
-    // refetch()
+
   })
 
-  refetch(`http://localhost:5000/myCart?email=${user?.email}`)
+  const [OrderViewData, setOrderViewData] = useState([])
+  useEffect(() => {
+    fetch(`http://localhost:5000/allOrder/unprocess`)
+      .then(res => res.json())
+      .then(data => {
+        setOrderViewData(data)
 
-  const { data: OrderData = [] } = useQuery({
-    queryKey: ['OrderData'],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/allOrders`, {
-        headers: {
-          'content-type': 'application/json'
-        }
-      });
-      const data = res.json();
-      return data;
-    },
-    // refetch()
-  })
+      })
+  }, [])
+  refetch()
+
+  // const { data: OrderViewData = [] } = useQuery({
+  //   queryKey: ['OrderViewData'],
+  //   queryFn: async () => {
+  //     const res = await fetch(`http://localhost:5000/allOrder/unprocess`, {
+  //       headers: {
+  //         'content-type': 'application/json'
+  //       }
+  //     });
+  //     const data = res.json();
+  //     return data;
+  //   },
+
+  // })
+
+
+  // refetchTwoUrls(`http://localhost:5000/allOrder/unprocess`, `http://localhost:5000/myCart?email=${user?.email}`)
+
+
 
   const handleLogOut = () => {
     LogOut()
@@ -91,7 +110,10 @@ const NavBar = () => {
               <label tabIndex={0} className="btn btn-ghost btn-circle mr-4">
                 <div className="indicator ">
                   <BsBell className="text-4xl" onClick={() => setClose(true)}></BsBell>
-                  <span className="badge badge-lg indicator-item text-white   bg-red-500 ">{OrderData.length}</span>
+                  {
+                    OrderViewData.length ? <span className="badge badge-lg indicator-item text-white   bg-red-500 ">{OrderViewData.length}</span> : ''
+                  }
+
                 </div>
               </label>
 
@@ -99,7 +121,7 @@ const NavBar = () => {
                 <div className="card-body">
                   {
                     close && <>
-                      <span className="font-bold text-3xl text-center">{OrderData.length} orders</span>
+                      <span className="font-bold text-3xl text-center">{OrderViewData.length} orders</span>
                       {/* <span className="text-info">Subtotal: ${total.toFixed(2)}</span> */}
                       <div className="card-actions">
                         <Link to='/dashboard/allOrders' className="btn btn-primary btn-block" onClick={() => setClose(false)}>View order</Link>

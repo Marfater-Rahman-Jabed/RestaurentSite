@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate, } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { toast } from "react-hot-toast";
@@ -12,7 +12,7 @@ const ItemsDetailsCard = ({ item }) => {
 
 
     const { user } = useContext(AuthContexts);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const UrlId = window.location.pathname.split('/')[2];
     // const { data: mydata = [], refetch } = useQuery({
     //     queryKey: ['Datas'],

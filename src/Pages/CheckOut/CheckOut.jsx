@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast";
 import Loading from "../../Components/Loading/Loading";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import ReviewModal from "../../Components/ReviewModal/ReviewModal";
+import { useNavigate } from "react-router-dom";
 // import { Fade } from "react-awesome-reveal";
 
 const CheckOut = () => {
@@ -126,7 +127,7 @@ const CheckOut = () => {
                 // refetch()
             })
     }
-
+    const navigate = useNavigate()
     const handleCashOn = (data, total, phone, email, address, name) => {
 
         console.log(data, total)
@@ -149,7 +150,9 @@ const CheckOut = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                toast.success('Your Order Created !!! . Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose')
+                toast.success('Your Order Created !!! . Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose');
+                // refetch(`http://localhost:5000/allOrder/unprocess`)
+                navigate('/')
             })
     }
 

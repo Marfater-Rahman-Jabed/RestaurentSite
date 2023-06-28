@@ -1,9 +1,10 @@
 import { Fade } from "react-awesome-reveal";
+import { toast } from "react-hot-toast";
 // import { BiUserCircle } from "react-icons/bi";
 import { useQuery } from "react-query";
 
 const AllOrders = () => {
-    const { data: OrderData = [] } = useQuery({
+    const { data: OrderData = [], refetch } = useQuery({
         queryKey: ['OrderData'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/allOrders`, {
@@ -16,12 +17,44 @@ const AllOrders = () => {
         },
         // refetch()
     })
-    console.log(OrderData[0]?.itemDetails?.length)
+    // console.log(OrderData[0]?.itemDetails?.length)
+    const handleProcess = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/updateProcessing/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch()
+                console.log(data)
+            })
+
+    }
+
+    const handleDelete = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/OrderDelete/${id}`, {
+            method: 'Delete',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch()
+                toast.success('Deleted Successfully')
+                console.log(data)
+            })
+    }
+
     return (
         <div>
             <div className="my-6">
                 <Fade direction="down">
-                    <h1 className="text-2xl text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Review Listed Here</span></h1>
+                    <h1 className="text-2xl text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Orders Listed Here</span></h1>
                 </Fade>
             </div>
             <div className="overflow-x-auto">
@@ -66,15 +99,11 @@ const AllOrders = () => {
                                 </div></td>
                                 <td className="font-bold"> $ {Order?.OvarAllPrice}</td>
 
-                                <td><button className="btn btn-sm bg-orange-400 hover:bg-orange-500">Unprocess</button></td>
+                                <td><button className="" onClick={() => handleProcess(Order?._id)}>{Order?.process == 'no' ? <span className="bg-orange-400 hover:bg-orange-500 btn btn-sm ">Unprocess</span> : <span className="text-green-400 hover:text-green-600 text-xl font-serif ">Processing...</span>}</button></td>
                                 {/* <td>{Order?.description}</td> */}
                                 <td><button>UnDelevered</button></td>
-                                <td><button>Delete</button></td>
-                                {/* <td>{user?.role ? <span className="bg-green-500 px-2 rounded-lg text-white font-semibold py-1">{user?.role}</span> : <span className='font-bold'>User</span>}</td> */}
-                                {/* <td><button className="btn btn-sm bg-red-500 hover:bg-red-500 text-white" onClick={() => handleDelete(Order?._id)}>Delete</button></td>
-                                <td>{Order?.display ?
-                                    '' : <button className="btn btn-sm bg-purple-500 hover:bg-orange-500 text-white" onClick={() => handleDisplay(Order?._id)}>Display</button>
-                                }</td> */}
+                                <td><button className="btn btn-sm bg-red-600 hover:bg-red-600" onClick={() => handleDelete(Order?._id)}>Delete</button></td>
+
 
                             </tr>)
                         }
