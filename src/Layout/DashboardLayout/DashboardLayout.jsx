@@ -1,11 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
+import { useContext } from "react";
+import { AuthContexts } from "../../Contexts/Contexts";
+import useAdmin from "../../Hooks/useAdmin";
+import AdminNavBar from "../../Components/NavBar/AdminNavBar";
 // import Footer from "../../Components/Footer/Footer";
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContexts);
+    const [Admin] = useAdmin(user?.email)
     return (
         <div >
-            <NavBar></NavBar>
+            {Admin ? <AdminNavBar></AdminNavBar> : <NavBar></NavBar>}
 
             <div className="drawer drawer-mobile lg:drawer-open">
                 <input id="Dashbord-drawer" type="checkbox" className="drawer-toggle" />

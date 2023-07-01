@@ -12,6 +12,8 @@ import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import AllReview from "../../Pages/DashBoard/AllReview/AllReview";
 import AllOrders from "../../Pages/DashBoard/AllOrders/AllOrders";
+import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import OrderDetails from "../../Pages/DashBoard/OrderDetails/OrderDetails";
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +54,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <AdminRoutes><DashboardLayout></DashboardLayout></AdminRoutes>,
         children: [
             {
                 path: '/dashboard',
@@ -65,6 +67,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allOrders',
                 element: <AllOrders></AllOrders>
+            },
+            {
+                path: '/dashboard/seeOrderDetails',
+                element: <OrderDetails></OrderDetails>
             }
         ]
 

@@ -132,6 +132,7 @@ const CheckOut = () => {
 
         console.log(data, total)
         const orderDetails = {
+            date: new Date(),
             itemDetails: data,
             OvarAllPrice: total,
             phone: phone,
