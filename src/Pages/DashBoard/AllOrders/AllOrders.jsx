@@ -62,6 +62,7 @@ const AllOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    toast.success('Successfully Delivered !!!')
                     refetch()
                     console.log(data)
                 })
