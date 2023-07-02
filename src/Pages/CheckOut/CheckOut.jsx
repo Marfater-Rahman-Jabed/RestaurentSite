@@ -153,7 +153,7 @@ const CheckOut = () => {
                 console.log(data)
                 toast.success('Your Order Created !!! . Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose');
                 // refetch(`http://localhost:5000/allOrder/unprocess`)
-                navigate('/')
+                navigate('/profile')
             })
     }
 

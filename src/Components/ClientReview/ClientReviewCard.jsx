@@ -3,7 +3,7 @@ const ClientReviewCard = ({ item }) => {
     return (
         <div>
             <div>
-                <div className="card mx-2 rounded-ss-none rounded-ee-none rounded-se-3xl rounded-es-3xl  bg-gradient-to-r from-stone-400 via-fuchsia-400 to-blue-300 h-52">
+                <div className="card mx-2 rounded-ss-none rounded-ee-none rounded-se-3xl rounded-es-3xl  bg-gradient-to-r from-stone-400 via-fuchsia-400 to-blue-300 lg:h-52 h-72">
                     <div className="card-body">
 
                         <p className="font-bold "><i>&quot;{item.description}&quot;</i></p>
