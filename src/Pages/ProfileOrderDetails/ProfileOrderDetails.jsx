@@ -1,7 +1,7 @@
 import { BsPrinter } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 
-const OrderDetails = () => {
+const ProfileOrderDetails = () => {
     const location = useLocation();
     const { Order } = location.state;
 
@@ -19,8 +19,8 @@ const OrderDetails = () => {
                 <span>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Name</span> : <span className="text-fuchsia-700"><i>{Order?.name}</i></span></h1>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Address</span> : <span className="text-fuchsia-700"><i>{Order?.address}</i></span></h1>
-                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Total Price:</span> : <span className="text-fuchsia-700"><i>{Order?.OvarAllPrice} + {Order?.payment === true ? '' : '(delivery charge = $ 5)'}</i></span></h1>
-                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Payment Status:</span> : <span className="text-fuchsia-700"><i>{Order?.payment === true ? 'Complete' : 'Cash On Delivery'}</i></span></h1>
+                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Total Price:</span> : <span className="text-fuchsia-700"><i> $ {Order?.OvarAllPrice}  {Order?.payment === true ? '' : '+(delivery charge = $ 5)'}</i></span></h1>
+                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Payment Status:</span> : <span className="text-fuchsia-700"><i>{Order?.payment === true ? 'Paid' : 'Unpaid (Cash On Delivery)'}</i></span></h1>
                 </span>
                 <span>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Email</span>: <span className="text-fuchsia-700"><i>{Order?.email}</i></span></h1>
@@ -74,5 +74,4 @@ const OrderDetails = () => {
     );
 };
 
-
-export default OrderDetails;
+export default ProfileOrderDetails;

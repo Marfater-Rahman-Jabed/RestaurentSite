@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 // import { space } from "postcss/lib/list";
 
 const Profile = () => {
@@ -56,7 +57,7 @@ const Profile = () => {
 
             })
     }
-
+    // console.log(userOrderDetails[0].paymentData.itemDetails)
     if (loading) {
         return <BigLoading></BigLoading>
     }
@@ -67,7 +68,7 @@ const Profile = () => {
                 <div className="lg:flex justify-between mb-44 border-4 border-dashed px-2 ">
                     <div className="lg:w-[40vw]">
                         <h1 className="text-center mb-2 text-3xl font-bold"><span className="text-fuchsia-700">User</span> <span className="text-pink-700">Information</span></h1>
-                        <div className="">
+                        <div className="my-10 px-6">
                             <div >
                                 <h1>Name: {userprofileDetails?.userName}</h1>
                                 <h1>Email: {userprofileDetails?.email}</h1>
@@ -79,10 +80,13 @@ const Profile = () => {
 
                         </div>
                     </div>
+                    <div className="lg:border-l-8 border-fuchsia-700">
+
+                    </div>
 
                     <div className="lg:w-[60vw] ">
                         <h1 className="text-center  text-3xl font-bold"><span className="text-fuchsia-700">Your</span> <span className="text-pink-700">Orders</span></h1>
-                        <div className="lg:border-l-8 border-fuchsia-700">
+                        <div className="my-10">
 
                             <div className="overflow-x-auto">
                                 <table className="table">
@@ -93,18 +97,20 @@ const Profile = () => {
                                             <th className="text-center">Item <br />Quantity</th>
                                             <th>Total <br />Price</th>
                                             <th>Status</th>
+                                            <th>Payment <br /> status</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {userOrderDetails?.map((Order, i) => <tr className="hover" key={i}>
                                             <th>{i + 1}</th>
-                                            <td>{Order?.date.split('T')[1].slice(0, -5)} <br /> {Order?.date.split('T')[0]}</td>
-                                            <td className="text-center">{Order?.itemDetails.length}</td>
+                                            <td>{Order?.date?.split('T')[1].slice(0, -5)} <br /> {Order?.date?.split('T')[0]}</td>
+                                            <td className="text-center"><Link to='/profileOrderDetails' state={{ Order }}>{Order?.itemDetails?.length}</Link></td>
                                             <td> $ {Order?.OvarAllPrice}</td>
                                             {
                                                 Order?.delivered == 'yes' ? <td className="text-green-700 font-bold">Delivered</td> : <td>{Order?.process == 'yes' ? <span className="text-yellow-700 font-bold">Processing...</span> : <span className="text-purple-500 font-bold">Pending...</span>}</td>
                                             }
+                                            <td>{Order?.payment == true ? <span className="text-green-700 font-bold text-xl">paid</span> : <span className="text-red-700 font-bold text-xl">unpaid</span>}</td>
                                             <td>{Order?.process == 'yes' && Order?.delivered !== 'yes' ? <span className="text-red-500">You can not <br />delete order now</span> : <button className="btn btn-sm bg-red-700 text-white hover:bg-red-700" onClick={() => handleOrderDelete(Order?._id)}>Delete</button>}</td>
 
                                         </tr>)}

@@ -87,11 +87,12 @@ const AllOrders = () => {
                         <tr>
                             {/* <th>Photo</th> */}
                             <th>SL <br /> No. </th>
-                            <th>Name /Email</th>
+                            <th>Name <br /> Email</th>
                             <th>Address / Phone</th>
 
                             <th>Order Qty</th>
                             <th>Total Price</th>
+                            <th>Payment <br />Status</th>
                             <th className="text-center">Process</th>
                             <th>Delivered</th>
                             <th>Action</th>
@@ -105,7 +106,7 @@ const AllOrders = () => {
                                 <td className="font-semibold text-xl">{i + 1}</td>
                                 <td className="">
                                     <div className="font-bold">{Order?.name}</div>
-                                    <div className="">{Order?.email}</div>
+                                    <div className="" title={Order?.email}>{Order?.email?.split('@')[0]}...</div>
                                 </td>
                                 <td>
                                     <div className="items-center">
@@ -118,12 +119,17 @@ const AllOrders = () => {
 
                                 <td className="text-center font-bold"><Link to='/dashboard/seeOrderDetails' state={{ Order }}>{Order?.itemDetails?.length}</Link></td>
                                 <td className="font-bold"> $ {Order?.OvarAllPrice}</td>
+                                <td>
+                                    {
+                                        Order?.payment == true ? <span className="text-green-500 font-bold text-xl">paid</span> : <span className="text-red-500 font-bold ">Unpaid</span>
+                                    }
+                                </td>
 
                                 {
-                                    Order?.delivered == 'yes' ? <TiTick className="text-5xl mx-auto mt-4 text-blue-600" title="Delevered Successfully"></TiTick> : <td><button className="" onClick={() => handleProcess(Order?._id)}>{Order?.process == 'no' ? <span className="bg-orange-400 hover:bg-orange-500 btn btn-sm ">Unprocess</span> : <span className="text-green-400 hover:text-green-600 text-xl font-serif ">Processing...</span>}</button></td>
+                                    Order?.delivered == 'yes' ? <TiTick className="text-5xl mx-auto mt-4 text-blue-600" title="Delevered Successfully"></TiTick> : <td><button className="" onClick={() => handleProcess(Order?._id)}>{Order?.process == 'no' ? <span className="bg-orange-400 hover:bg-orange-500 btn btn-sm ">Make <br />Process</span> : <span className="text-green-400 hover:text-green-600 text-xl font-serif ">Processing...</span>}</button></td>
                                 }
                                 {/* <td>{Order?.description}</td> */}
-                                <td>{Order?.delivered == 'yes' && Order?.process == 'yes' ? <span className="bg-green-700 p-2 text-white font-bold rounded-lg">Delivered</span> : <button className="bg-slate-400 hover:bg-orange-500 btn btn-xs" onClick={() => handleDelivered(Order?._id, Order?.process)}>UnDelivered</button>}
+                                <td>{Order?.delivered == 'yes' && Order?.process == 'yes' ? <span className="bg-green-700 p-2 text-white font-bold rounded-lg">Delivered</span> : <button className="bg-slate-400 hover:bg-orange-500 btn btn-sm" onClick={() => handleDelivered(Order?._id, Order?.process)}>Make <br /> Delivered</button>}
 
                                 </td>
                                 <td><button className="btn btn-sm bg-red-600 hover:bg-red-600" onClick={() => handleDelete(Order?._id)}>Delete</button></td>

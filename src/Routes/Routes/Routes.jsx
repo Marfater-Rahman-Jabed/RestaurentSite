@@ -14,6 +14,8 @@ import AllReview from "../../Pages/DashBoard/AllReview/AllReview";
 import AllOrders from "../../Pages/DashBoard/AllOrders/AllOrders";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import OrderDetails from "../../Pages/DashBoard/OrderDetails/OrderDetails";
+import SuccessPage from "../../Pages/SuccessPage/SuccessPage";
+import ProfileOrderDetails from "../../Pages/ProfileOrderDetails/ProfileOrderDetails";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +51,14 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
+            },
+            {
+                path: '/paymentSuccess',
+                element: <SuccessPage></SuccessPage>
+            },
+            {
+                path: '/profileOrderDetails',
+                element: <ProfileOrderDetails></ProfileOrderDetails>
             }
         ]
     },
