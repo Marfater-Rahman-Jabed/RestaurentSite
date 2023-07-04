@@ -7,7 +7,7 @@ const useAdmin = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/alluser/admin/${email}`, {
+            fetch(`https://resturent-manager-server.vercel.app/alluser/admin/${email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

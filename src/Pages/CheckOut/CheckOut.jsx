@@ -29,7 +29,7 @@ const CheckOut = () => {
     const { data: cartData = [], refetch } = useQuery({
         queryKey: ['cartData'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myCart?email=${user?.email}`, {
+            const res = await fetch(`https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -43,7 +43,7 @@ const CheckOut = () => {
     const { data: userDetails = [] } = useQuery({
         queryKey: ['userDetails'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allUser/${user?.email}`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allUser/${user?.email}`)
             const data = res.json();
             return data;
         }
@@ -51,7 +51,7 @@ const CheckOut = () => {
     // 
     const handleIncrease = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/quantity/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/quantity/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -66,7 +66,7 @@ const CheckOut = () => {
     const handleDecrease = (id, quantity) => {
         console.log(id, quantity - 1)
         if (quantity > 1) {
-            fetch(`http://localhost:5000/decrease/${id}`, {
+            fetch(`https://resturent-manager-server.vercel.app/decrease/${id}`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json'
@@ -85,14 +85,14 @@ const CheckOut = () => {
     const handleDelete = (id) => {
 
         console.log(id)
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/cart/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 toast.success('Successfully Deleted !!!')
-                refetch(`http://localhost:5000/myCart?email=${user?.email}`)
+                refetch(`https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`)
             })
     }
     const downloadPdf = () => {
@@ -118,7 +118,7 @@ const CheckOut = () => {
     const calculateTotal = () => {
         // setLoading(true)
         setCalculateLoading(true)
-        fetch(`http://localhost:5000/cartCalculation?email=${user?.email}`)
+        fetch(`https://resturent-manager-server.vercel.app/cartCalculation?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -140,9 +140,10 @@ const CheckOut = () => {
             address: address,
             name: name,
             process: 'no',
-            payment: false
+            payment: false,
+            fraud: 'no'
         }
-        fetch(`http://localhost:5000/createOrder`, {
+        fetch(`https://resturent-manager-server.vercel.app/createOrder`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -153,7 +154,7 @@ const CheckOut = () => {
             .then(data => {
                 console.log(data)
                 toast.success('Your Order Created !!! . Starting Download Your Order File. You Should Contain this PDF for Confirmation Purpose');
-                // refetch(`http://localhost:5000/allOrder/unprocess`)
+                // refetch(`https://resturent-manager-server.vercel.app/allOrder/unprocess`)
                 navigate('/profile')
             })
     }
@@ -171,9 +172,10 @@ const CheckOut = () => {
             email: userDetails?.email,
             address: userDetails?.address,
             process: 'no',
-            payment: false
+            payment: false,
+            fraud: 'ok'
         }
-        fetch(' http://localhost:5000/onlinePayment', {
+        fetch(' https://resturent-manager-server.vercel.app/onlinePayment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -205,7 +207,7 @@ const CheckOut = () => {
 
             </div>
             <div className="lg:mb-16 lg:mt-6">
-                <div className="lg:flex md:flex print:flex lg:mx-24 md:mx-24 mb-6 mt-4">
+                <div className="lg:flex md:flex print:flex lg:mx-24  mb-6 mt-4">
                     <div className="lg:w-1/2 mx-4">
                         <h1 className="font-semibold text-xl mb-2">Name : <span className="mx-2">{user?.displayName ? user?.displayName : user?.email.split('@')[0].toUpperCase()}</span></h1>
                         <h1 className="font-semibold text-xl mb-2">Email : <span className="font-bold mx-2">{user?.email}</span></h1>
@@ -232,7 +234,7 @@ const CheckOut = () => {
                 }
                 <div className="grid grid-cols-1 gap-2 mb-2">
                     {
-                        cartData?.map((cart, i) => <div key={i} className="flex justify-between border-2 items-center lg:w-[60vw] mx-auto bg-base-300 gap-2" >
+                        cartData?.map((cart, i) => <div key={i} className="flex justify-between border-2 items-center lg:w-[60vw] md:w-[70vw] mx-auto bg-base-300 gap-2" >
                             {/* <img src={cart.picture} alt=""  /> */}
                             <PhotoProvider>
                                 <PhotoView src={cart?.picture}>

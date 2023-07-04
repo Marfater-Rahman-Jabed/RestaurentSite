@@ -15,13 +15,13 @@ const ItemsDetails = () => {
     const { data: mydata = [], refetch } = useQuery({
         queryKey: ['Datas'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allItem/${UrlId}`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allItem/${UrlId}`)
             const data = res.json()
             return data;
         }
     })
     // console.log(mydata[0].title)
-    refetch(`http://localhost:5000/allItem/${UrlId}`)
+    refetch(`https://resturent-manager-server.vercel.app/allItem/${UrlId}`)
     // console.log(id)
     // const location = useLocation();
     // const { item._id } = location.state;

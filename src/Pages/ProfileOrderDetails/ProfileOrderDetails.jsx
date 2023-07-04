@@ -8,7 +8,7 @@ const ProfileOrderDetails = () => {
     const allItem = Order?.itemDetails
     // console.log(allItem)
     return (
-        <div className="w-[70vw] mx-auto mt-10 print:w-full">
+        <div className="lg:w-[70vw] md:w-[70vw] mx-auto mt-10 print:w-full">
             <div className="flex justify-end text-3xl text-fuchsia-700" title="Print Order Slip">
                 <button onClick={() => window.print()} ><BsPrinter className="me-6 print:hidden" data-html2canvas-ignore="true" ></BsPrinter></button>
             </div>
@@ -43,24 +43,24 @@ const ProfileOrderDetails = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th className="text-center">SL No</th>
+                                <th className="text-center">SL <br /> No</th>
                                 <th className="">Picture</th>
-                                <th className="text-center">Item Name</th>
+                                <th className="text-center">Item <br /> Name</th>
 
                                 <th className="text-center">Quantity</th>
-                                <th className="text-center">Unit Price</th>
-                                <th className="text-center">SubTotal Price</th>
+                                <th className="text-center">Unit <br /> Price</th>
+                                <th className="text-center">SubTotal <br /> Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 allItem.map(item => <tr key={item?._id} className="hover:bg-blue-200">
-                                    <th className="text-center font-bold text-xl">1</th>
-                                    <td className="text-center"><img src={item?.picture} alt="" className="w-24 h-24" /></td>
-                                    <td className="text-center font-bold text-xl">{item?.name}</td>
-                                    <td className="text-center font-bold text-xl">{item?.quantity}</td>
-                                    <td className="text-center font-bold text-xl">$ {item?.price}</td>
-                                    <td className="text-center font-bold text-xl">$ {item?.totalPrice}</td>
+                                    <th className="text-center font-bold lg:text-xl">1</th>
+                                    <td className="text-center"><img src={item?.picture} alt="" className="lg:w-24 lg:h-24 w-6 h-6" /></td>
+                                    <td className="text-center font-bold lg:text-xl">{item?.name}</td>
+                                    <td className="text-center font-bold lg:text-xl">{item?.quantity}</td>
+                                    <td className="text-center font-bold lg:text-xl"> ${item?.price}</td>
+                                    <td className="text-center font-bold lg:text-xl"> ${item?.totalPrice}</td>
                                 </tr>)
                             }
 

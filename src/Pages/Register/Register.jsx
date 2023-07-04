@@ -73,7 +73,7 @@ const Register = () => {
 
         }
 
-        fetch(`http://localhost:5000/addUser`, {
+        fetch(`https://resturent-manager-server.vercel.app/addUser`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

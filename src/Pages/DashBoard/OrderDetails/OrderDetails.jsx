@@ -19,13 +19,14 @@ const OrderDetails = () => {
                 <span>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Name</span> : <span className="text-fuchsia-700"><i>{Order?.name}</i></span></h1>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Address</span> : <span className="text-fuchsia-700"><i>{Order?.address}</i></span></h1>
-                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Total Price:</span> : <span className="text-fuchsia-700"><i>{Order?.OvarAllPrice} + {Order?.payment === true ? '' : '(delivery charge = $ 5)'}</i></span></h1>
+                    <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Total Price:</span> : <span className="text-fuchsia-700"><i>{Order?.OvarAllPrice}{Order?.payment === true ? '' : ' + (delivery charge = $ 5)'}</i></span></h1>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Payment Status:</span> : <span className="text-fuchsia-700"><i>{Order?.payment === true ? 'Complete' : 'Cash On Delivery'}</i></span></h1>
                 </span>
                 <span>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Email</span>: <span className="text-fuchsia-700"><i>{Order?.email}</i></span></h1>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">User Phone</span> : <span className="text-fuchsia-700"><i>{Order?.phone}</i></span></h1>
                     <h1 className="font-semibold font-serif mb-2"><span className="text-pink-700">Net Price</span> : <span className="text-fuchsia-700"> $ <i>{Order?.payment === true ? parseFloat(Order?.OvarAllPrice) : parseFloat(Order?.OvarAllPrice) + 5}</i></span></h1>
+                    <h1 className="font-bold  mb-2"><span className="text-pink-700">Order No</span> : <span className="text-fuchsia-700"> # {Order?._id.slice(-5)}</span></h1>
 
                 </span>
 

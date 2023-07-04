@@ -8,7 +8,7 @@ const AllOrders = () => {
     const { data: OrderData = [], refetch } = useQuery({
         queryKey: ['OrderData'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allOrders`, {
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allOrders`, {
                 headers: {
                     'content-type': 'application/json'
                 }
@@ -21,7 +21,7 @@ const AllOrders = () => {
     // console.log(OrderData[0]?.itemDetails?.length)
     const handleProcess = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/updateProcessing/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/updateProcessing/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const AllOrders = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/OrderDelete/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/OrderDelete/${id}`, {
             method: 'Delete',
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +54,7 @@ const AllOrders = () => {
     const handleDelivered = (id, processs) => {
         console.log(id, processs)
         if (processs === 'yes') {
-            fetch(`http://localhost:5000/updateDelevered/${id}`, {
+            fetch(`https://resturent-manager-server.vercel.app/updateDelevered/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -75,19 +75,23 @@ const AllOrders = () => {
 
     return (
         <div>
+            <label htmlFor="Dashbord-drawer" className="drawer-button btn  lg:hidden  flex justify-start">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
             <div className="my-6">
                 <Fade direction="down">
-                    <h1 className="text-2xl text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Orders Listed Here</span></h1>
+                    <h1 className="text-2xl lg:text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Orders Listed Here</span></h1>
                 </Fade>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table">
+            <div className="overflow-x-auto ">
+                <table className="table ">
 
                     <thead>
                         <tr>
                             {/* <th>Photo</th> */}
-                            <th>SL <br /> No. </th>
-                            <th>Name <br /> Email</th>
+                            {/* <th>SL <br /> No. </th> */}
+                            <th>Order <br /> No.</th>
+                            <th className="">Name <br /> Email</th>
                             <th>Address / Phone</th>
 
                             <th>Order Qty</th>
@@ -103,7 +107,8 @@ const AllOrders = () => {
 
                         {
                             OrderData.map((Order, i) => <tr className="hover:bg-base-300" key={i}>
-                                <td className="font-semibold text-xl">{i + 1}</td>
+                                {/* <td className="font-semibold text-xl">{i + 1}</td> */}
+                                <td className="font-semibold text-xl">#{Order?._id.slice(-5)}</td>
                                 <td className="">
                                     <div className="font-bold">{Order?.name}</div>
                                     <div className="" title={Order?.email}>{Order?.email?.split('@')[0]}...</div>
@@ -121,18 +126,30 @@ const AllOrders = () => {
                                 <td className="font-bold"> $ {Order?.OvarAllPrice}</td>
                                 <td>
                                     {
-                                        Order?.payment == true ? <span className="text-green-500 font-bold text-xl">paid</span> : <span className="text-red-500 font-bold ">Unpaid</span>
+                                        Order?.fraud === 'ok' ? <span className="text-red-500 font-bold  animate-pulse">InComplete <br /> Order</span> : <span>{
+                                            Order?.payment == true ? <span className="text-green-500 font-bold text-xl">paid</span> : <span className="text-red-500 font-bold ">Unpaid</span>
+                                        }</span>
                                     }
+
                                 </td>
 
                                 {
-                                    Order?.delivered == 'yes' ? <TiTick className="text-5xl mx-auto mt-4 text-blue-600" title="Delevered Successfully"></TiTick> : <td><button className="" onClick={() => handleProcess(Order?._id)}>{Order?.process == 'no' ? <span className="bg-orange-400 hover:bg-orange-500 btn btn-sm ">Make <br />Process</span> : <span className="text-green-400 hover:text-green-600 text-xl font-serif ">Processing...</span>}</button></td>
+                                    Order?.delivered == 'yes' ? <TiTick className="text-5xl mx-auto mt-4 text-blue-600" title="Delevered Successfully"></TiTick> : <td><button className="" onClick={() => handleProcess(Order?._id)}>
+                                        {
+                                            Order?.fraud === 'ok' ? <span className="text-red-500 font-bold  animate-pulse">InComplete <br /> Order</span> : <span>{Order?.process == 'no' ? <span className="bg-orange-400 hover:bg-orange-500 btn btn-sm ">Make <br />Process</span> : <span className="text-green-400 hover:text-green-600  font-bold font-serif ">Processing...</span>}</span>
+                                        }
+
+                                    </button></td>
                                 }
                                 {/* <td>{Order?.description}</td> */}
-                                <td>{Order?.delivered == 'yes' && Order?.process == 'yes' ? <span className="bg-green-700 p-2 text-white font-bold rounded-lg">Delivered</span> : <button className="bg-slate-400 hover:bg-orange-500 btn btn-sm" onClick={() => handleDelivered(Order?._id, Order?.process)}>Make <br /> Delivered</button>}
+                                <td>
+                                    {
+                                        Order?.fraud === 'ok' ? <span className="text-red-500 font-bold  animate-pulse">InComplete <br /> Order</span> : <span>{Order?.delivered == 'yes' && Order?.process == 'yes' ? <span className="bg-green-700 p-2 text-white font-bold rounded-lg">Delivered</span> : <button className="bg-slate-400 hover:bg-orange-500 btn btn-sm " onClick={() => handleDelivered(Order?._id, Order?.process)}>Make <br /> Delivered</button>}</span>
+                                    }
+
 
                                 </td>
-                                <td><button className="btn btn-sm bg-red-600 hover:bg-red-600" onClick={() => handleDelete(Order?._id)}>Delete</button></td>
+                                <td><button className="btn btn-sm bg-red-600 hover:bg-red-600 text-white" onClick={() => handleDelete(Order?._id)}>Delete</button></td>
 
 
                             </tr>)

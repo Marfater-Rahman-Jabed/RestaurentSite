@@ -30,7 +30,7 @@ const AdminNavBar = () => {
     const { data: OrderViewData = [], refetch } = useQuery({
         queryKey: ['OrderViewData'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allOrder/unprocess`, {
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allOrder/unprocess`, {
                 headers: {
                     'content-type': 'application/json'
                 }
@@ -41,12 +41,12 @@ const AdminNavBar = () => {
 
     })
 
-    refetch(`http://localhost:5000/allOrder/unprocess`)
+    refetch(`https://resturent-manager-server.vercel.app/allOrder/unprocess`)
 
     // const { data: cartData = [], } = useQuery({
     //     queryKey: ['cartData'],
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/myCart?email=${user?.email}`, {
+    //         const res = await fetch(`https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`, {
     //             headers: {
     //                 'content-type': 'application/json'
     //             }
@@ -59,7 +59,7 @@ const AdminNavBar = () => {
 
     //   const [OrderViewData, setOrderViewData] = useState([])
     //   useEffect(() => {
-    //     fetch(`http://localhost:5000/allOrder/unprocess`)
+    //     fetch(`https://resturent-manager-server.vercel.app/allOrder/unprocess`)
     //       .then(res => res.json())
     //       .then(data => {
     //         setOrderViewData(data)
@@ -71,7 +71,7 @@ const AdminNavBar = () => {
 
 
 
-    // refetchTwoUrls(`http://localhost:5000/allOrder/unprocess`, `http://localhost:5000/myCart?email=${user?.email}`)
+    // refetchTwoUrls(`https://resturent-manager-server.vercel.app/allOrder/unprocess`, `https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`)
 
 
 
@@ -85,7 +85,7 @@ const AdminNavBar = () => {
     }
 
 
-    // fetch(`http://localhost:5000/cartCalculation?email=${user?.email}`)
+    // fetch(`https://resturent-manager-server.vercel.app/cartCalculation?email=${user?.email}`)
     //   .then(res => res.json())
     //   .then(data => {
     //     console.log(data)

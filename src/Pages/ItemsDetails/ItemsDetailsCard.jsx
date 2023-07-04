@@ -17,7 +17,7 @@ const ItemsDetailsCard = ({ item }) => {
     // const { data: mydata = [], refetch } = useQuery({
     //     queryKey: ['Datas'],
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/allItem/${UrlId}`)
+    //         const res = await fetch(`https://resturent-manager-server.vercel.app/allItem/${UrlId}`)
     //         const data = res.json()
     //         return data;
     //     }
@@ -37,7 +37,7 @@ const ItemsDetailsCard = ({ item }) => {
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         if (user?.emailVerified) {
-            fetch(`http://localhost:5000/addToCart`, {
+            fetch(`https://resturent-manager-server.vercel.app/addToCart`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -70,7 +70,7 @@ const ItemsDetailsCard = ({ item }) => {
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         if (user?.emailVerified) {
-            fetch(`http://localhost:5000/addToCart`, {
+            fetch(`https://resturent-manager-server.vercel.app/addToCart`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -93,7 +93,7 @@ const ItemsDetailsCard = ({ item }) => {
 
     const handlePopular = (item) => {
         console.log(item)
-        fetch(`http://localhost:5000/addPopular`, {
+        fetch(`https://resturent-manager-server.vercel.app/addPopular`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -109,7 +109,7 @@ const ItemsDetailsCard = ({ item }) => {
 
     const handleUnAvailabe = (id) => {
         // console.log(id)
-        fetch(`http://localhost:5000/itemsDisable/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/itemsDisable/${id}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -125,7 +125,7 @@ const ItemsDetailsCard = ({ item }) => {
 
     const handleAvailable = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/itemsMakeAble/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/itemsMakeAble/${id}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

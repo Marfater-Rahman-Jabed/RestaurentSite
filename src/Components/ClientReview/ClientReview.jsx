@@ -17,7 +17,7 @@ function ClientReview() {
     const { data: Items = [] } = useQuery({
         queryKey: ['allReview'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allReview`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allReview`)
             const data = res.json();
             return data;
         }

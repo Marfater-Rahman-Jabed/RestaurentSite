@@ -10,7 +10,7 @@ function ServicesCard() {
     const { data: dataItem = [] } = useQuery({
         queryKey: ['dataItem'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allItem`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allItem`)
             const data = res.json()
             return data
         }

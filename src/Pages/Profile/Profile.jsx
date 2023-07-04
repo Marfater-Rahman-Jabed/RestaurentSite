@@ -15,7 +15,7 @@ const Profile = () => {
     // const [userOrderDetails, setUserOrderDetails] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allUser/${user?.email}`)
+        fetch(`https://resturent-manager-server.vercel.app/allUser/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserprofileDetails(data)
@@ -26,7 +26,7 @@ const Profile = () => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/allorders/${user?.email}`)
+    //     fetch(`https://resturent-manager-server.vercel.app/allorders/${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setUserOrderDetails(data)
@@ -38,16 +38,16 @@ const Profile = () => {
     const { data: userOrderDetails = [], refetch } = useQuery({
         queryKey: ['UserOrderDetails'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allorders/${user?.email}`);
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allorders/${user?.email}`);
             const data = res.json();
             return data;
         }
     })
-    refetch(`http://localhost:5000/allorders/${user?.email}`)
+    refetch(`https://resturent-manager-server.vercel.app/allorders/${user?.email}`)
 
     const handleOrderDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/deleteOrderfromProfile/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/deleteOrderfromProfile/${id}`, {
             method: 'Delete',
         })
             .then(res => res.json())
@@ -85,41 +85,55 @@ const Profile = () => {
                     </div>
 
                     <div className="lg:w-[60vw] ">
-                        <h1 className="text-center  text-3xl font-bold"><span className="text-fuchsia-700">Your</span> <span className="text-pink-700">Orders</span></h1>
-                        <div className="my-10">
+                        {
+                            userOrderDetails.length > 0 ? <div>
+                                <h1 className="text-center  text-3xl font-bold"><span className="text-fuchsia-700">Your</span> <span className="text-pink-700">Orders</span></h1>
+                                <div className="my-10">
 
-                            <div className="overflow-x-auto">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>SL No.</th>
-                                            <th>Time</th>
-                                            <th className="text-center">Item <br />Quantity</th>
-                                            <th>Total <br />Price</th>
-                                            <th>Status</th>
-                                            <th>Payment <br /> status</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {userOrderDetails?.map((Order, i) => <tr className="hover" key={i}>
-                                            <th>{i + 1}</th>
-                                            <td>{Order?.date?.split('T')[1].slice(0, -5)} <br /> {Order?.date?.split('T')[0]}</td>
-                                            <td className="text-center"><Link to='/profileOrderDetails' state={{ Order }}>{Order?.itemDetails?.length}</Link></td>
-                                            <td> $ {Order?.OvarAllPrice}</td>
-                                            {
-                                                Order?.delivered == 'yes' ? <td className="text-green-700 font-bold">Delivered</td> : <td>{Order?.process == 'yes' ? <span className="text-yellow-700 font-bold">Processing...</span> : <span className="text-purple-500 font-bold">Pending...</span>}</td>
-                                            }
-                                            <td>{Order?.payment == true ? <span className="text-green-700 font-bold text-xl">paid</span> : <span className="text-red-700 font-bold text-xl">unpaid</span>}</td>
-                                            <td>{Order?.process == 'yes' && Order?.delivered !== 'yes' ? <span className="text-red-500">You can not <br />delete order now</span> : <button className="btn btn-sm bg-red-700 text-white hover:bg-red-700" onClick={() => handleOrderDelete(Order?._id)}>Delete</button>}</td>
+                                    <div className="overflow-x-auto">
+                                        <table className="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order <br /> No.</th>
+                                                    <th>Time</th>
+                                                    <th className="text-center">Item <br />Quantity</th>
+                                                    <th>Total <br />Price</th>
+                                                    <th>Status</th>
+                                                    <th>Payment <br /> status</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {userOrderDetails?.map((Order, i) => <tr className="hover" key={i}>
+                                                    <th>#{Order?._id?.slice(-5)}</th>
+                                                    <td>{new Date(Order?.date).toString().slice(0, 15)} <br />{new Date(Order?.date).toString().slice(15, 25)}</td>
+                                                    <td className="text-center"><Link to='/profileOrderDetails' state={{ Order }}>{Order?.itemDetails?.length}</Link></td>
+                                                    <td> $ {Order?.OvarAllPrice}</td>
+                                                    {
+                                                        Order?.delivered == 'yes' ? <td className="text-green-700 font-bold">Delivered</td> : <td>{Order?.process == 'yes' ? <span className="text-yellow-700 font-bold">Processing...</span> : <span className="text-purple-500 font-bold">Pending...</span>}</td>
+                                                    }
+                                                    <td>{Order?.payment == true ? <span className="text-green-700 font-bold text-xl">paid</span> : <span className="text-red-700 font-bold text-xl">unpaid</span>}</td>
+                                                    <td>{
+                                                        Order?.payment == true && Order?.process !== 'yes' ? <span className="text-green-600 font-bold">
+                                                            Please Wait...
+                                                        </span> : <span>
+                                                            {Order?.process == 'yes' && Order?.delivered !== 'yes' ? <span className="text-red-500">You can not <br />delete order now</span> : <button className="btn btn-sm bg-red-700 text-white hover:bg-red-700" onClick={() => handleOrderDelete(Order?._id)}>Delete</button>}
+                                                        </span>
 
-                                        </tr>)}
+                                                    }</td>
 
-                                    </tbody>
-                                </table>
+                                                </tr>)}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div> : <div>
+                                <h1 className="text-center  text-3xl font-bold"><span className="text-fuchsia-700">Your Does Not</span> <span className="text-pink-700">Orders Yet</span></h1>
                             </div>
+                        }
 
-                        </div>
                     </div>
                 </div>
             </div>

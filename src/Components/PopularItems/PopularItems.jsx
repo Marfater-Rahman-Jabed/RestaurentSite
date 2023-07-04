@@ -17,7 +17,7 @@ const PopularItems = () => {
     const { data: allItems = [], refetch } = useQuery({
         queryKey: ["AllPopularItem"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allPopularItem`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allPopularItem`)
             const data = res.json();
             return data
         }

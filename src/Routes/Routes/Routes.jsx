@@ -16,6 +16,9 @@ import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import OrderDetails from "../../Pages/DashBoard/OrderDetails/OrderDetails";
 import SuccessPage from "../../Pages/SuccessPage/SuccessPage";
 import ProfileOrderDetails from "../../Pages/ProfileOrderDetails/ProfileOrderDetails";
+import PaymentFailPage from "../../Pages/PaymentFailPage/PaymentFailPage";
+import PaymentCancelPage from "../../Pages/PaymentCancelPage/PaymentCancelPage";
+import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +32,7 @@ export const router = createBrowserRouter([
             {
                 path: '/allItem/:id',
                 element: <ItemsDetails></ItemsDetails>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/allItem/${params.id}`)
+                // loader: ({ params }) => fetch(`https://resturent-manager-server.vercel.app/allItem/${params.id}`)
 
             },
             {
@@ -54,7 +57,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/paymentSuccess',
-                element: <SuccessPage></SuccessPage>
+                element: <PrivateRoutes><SuccessPage></SuccessPage></PrivateRoutes>
+            },
+            {
+                path: '/paymentFail',
+                element: <PrivateRoutes><PaymentFailPage></PaymentFailPage></PrivateRoutes>
+            },
+            {
+                path: '/paymentCancel',
+                element: <PrivateRoutes><PaymentCancelPage></PaymentCancelPage></PrivateRoutes>
             },
             {
                 path: '/profileOrderDetails',
@@ -84,5 +95,10 @@ export const router = createBrowserRouter([
             }
         ]
 
+
+    },
+    {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
     }
 ])

@@ -23,7 +23,7 @@ const SliderTop = () => {
     const { data: arr = [], refetch } = useQuery({
         queryKey: ['arr'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allBanner`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allBanner`)
             const data = res.json()
             return data
         }
@@ -46,7 +46,7 @@ const SliderTop = () => {
                         img: image.data.url
                     }
 
-                    fetch(`http://localhost:5000/AddBanner`, {
+                    fetch(`https://resturent-manager-server.vercel.app/AddBanner`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -75,7 +75,7 @@ const SliderTop = () => {
 
 
         if (sure && arr.length > 1) {
-            fetch(`http://localhost:5000/banner/${id}`, {
+            fetch(`https://resturent-manager-server.vercel.app/banner/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

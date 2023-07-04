@@ -7,14 +7,14 @@ const AllReview = () => {
     const { data: allReview = [], refetch } = useQuery({
         queryKey: ['allUser'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allReview`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allReview`)
             const data = res.json();
             return data;
         }
     })
     const handleDisplay = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/updateReviewDisplay/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/updateReviewDisplay/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'Application/json'
@@ -31,7 +31,7 @@ const AllReview = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/reviewDelete/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/reviewDelete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -43,9 +43,12 @@ const AllReview = () => {
     }
     return (
         <div>
+            <label htmlFor="Dashbord-drawer" className="drawer-button btn  lg:hidden  flex justify-start">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
             <div className="my-6">
                 <Fade direction="down">
-                    <h1 className="text-2xl text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Review Listed Here</span></h1>
+                    <h1 className="text-2xl lg:text-center font-bold font-serif "><span className="text-fuchsia-700">All Types Of </span><span className="text-pink-700"> Review Listed Here</span></h1>
                 </Fade>
             </div>
             <div className="overflow-x-auto">

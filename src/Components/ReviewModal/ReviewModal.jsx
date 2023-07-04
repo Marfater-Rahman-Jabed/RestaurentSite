@@ -21,7 +21,7 @@ const ReviewModal = () => {
             description: reviews
         }
 
-        fetch('http://localhost:5000/clientReview', {
+        fetch('https://resturent-manager-server.vercel.app/clientReview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

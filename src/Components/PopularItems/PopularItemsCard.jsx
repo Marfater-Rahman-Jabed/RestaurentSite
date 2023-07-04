@@ -13,10 +13,10 @@ import useAdmin from '../../Hooks/useAdmin';
 
 const PopularItemsCard = ({ item, refetch }) => {
     const { user } = useContext(AuthContexts)
-    // const { refetch } = useQuery(`http://localhost:5000/myCart?email=${user?.email}`)
+    // const { refetch } = useQuery(`https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`)
     // console.log(user?.emailVerified)
     const [Admin] = useAdmin(user?.email)
-    // refetch(`http://localhost:5000/myCart?email=${user?.email}`)
+    // refetch(`https://resturent-manager-server.vercel.app/myCart?email=${user?.email}`)
     const HandleAddCart = (items) => {
         // console.log("add to cart successfully", items)
         const cartData = {
@@ -29,7 +29,7 @@ const PopularItemsCard = ({ item, refetch }) => {
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         if (user?.emailVerified) {
-            fetch(`http://localhost:5000/addToCart`, {
+            fetch(`https://resturent-manager-server.vercel.app/addToCart`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -60,7 +60,7 @@ const PopularItemsCard = ({ item, refetch }) => {
             totalPrice: (items.price * 1) - ((items.price * 1) * (items?.discount > 0 ? items?.discount / 100 : 0))
         }
         if (user?.emailVerified) {
-            fetch(`http://localhost:5000/addToCart`, {
+            fetch(`https://resturent-manager-server.vercel.app/addToCart`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -82,7 +82,7 @@ const PopularItemsCard = ({ item, refetch }) => {
     const handleDelete = (id) => {
         console.log(id)
 
-        fetch(`http://localhost:5000/popularDelete/${id}`, {
+        fetch(`https://resturent-manager-server.vercel.app/popularDelete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

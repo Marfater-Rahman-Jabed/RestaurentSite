@@ -5,14 +5,14 @@ const DashBoard = () => {
     const { data: allUser = [] } = useQuery({
         queryKey: ['allUser'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allUser`)
+            const res = await fetch(`https://resturent-manager-server.vercel.app/allUser`)
             const data = res.json();
             return data;
         }
     })
     return (
         <div className=" ">
-            <label htmlFor="Dashbord-drawer" className="drawer-button btn  lg:hidden md:hidden flex justify-end">
+            <label htmlFor="Dashbord-drawer" className="drawer-button btn  lg:hidden  flex justify-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
             <div>
@@ -51,7 +51,9 @@ const DashBoard = () => {
                                     </td>
                                     <td>{user?.phone}</td>
                                     <td>{user?.role ? <span className="bg-green-500 px-2 rounded-lg text-white font-semibold py-1">{user?.role}</span> : <span className='font-bold'>User</span>}</td>
-                                    <td><button className="btn btn-sm bg-red-500 hover:bg-red-500 text-white">Delete</button></td>
+                                    <td>{
+                                        user?.role === 'admin' ? '' : <button className="btn btn-sm bg-red-500 hover:bg-red-500 text-white">Delete</button>
+                                    }</td>
 
                                 </tr>)
                             }
